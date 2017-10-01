@@ -1,0 +1,115 @@
+/*Determines the background immage and placement*/
+ #homepage{
+  background-image: url(Logo.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: 80% 60%;
+  background-color: #b3cccc;
+}
+#RegistrationPage{
+ background-position: center;
+ background-attachment: fixed;
+ background-size: 80% 60%;
+ background-color: #b3cccc;
+}
+.textboxes{
+margin-left: 40%;
+padding: 10px;
+font-size: 25px;
+font-family:Arvo;
+}
+.textboxes input{
+  min-width: 100px;
+  font-size: 20px;
+  width: 250px;
+}
+.textboxes textarea{
+  font-size: 20px;
+  width: 250px;
+}
+/*This stops bug where if parent elemet has a floated child element it will disappear*/
+.clearfix:after {
+    display:block;
+    clear:both;
+}
+/*----- Menu Outline -----*/
+/*This determines the height, width, shadow and opacity, and background color*/
+.menu-wrap{
+    width:100%;
+    height:54.5px;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.2);
+    background:#505256;
+}
+/*This determins the the width for the regular menu items and
+determins links height and width from top and left of page */
+.menu {
+    width:1000px;
+    margin:auto 0px;
+}
+/*This has the font style, makes it so no markers are shown and the margin for the links */
+.menu li {
+    margin:0px;
+    list-style:none;
+    font-family:Arvo;
+}
+/*controls the color of the links and gets rid of the link underline*/
+.menu a {
+    transition:all linear 0.15s;
+    color: #b3cccc;
+    text-decoration: none;
+    font-size: 20px
+}
+/*changes the background color of the links on hover*/
+.menu a:hover{
+  background:#6a6d72;
+}
+/*arrow size*/
+.menu .arrow {
+    font-size:11px;
+    line-height:0%;
+}
+
+/*----- Top Level -----*/
+/*this floats the main icons to the left, puts them next to each other  */
+.menu > ul > li {
+    float:left;
+    display:inline-block;
+    position:relative;
+    font-size:20px;
+}
+/*sets the padding */
+.menu > ul > li > a {
+    padding:15px 40px;
+    display:inline-block;
+    text-shadow:0px 1px 0px rgba(0,0,0,0.4);
+}
+/*----- Bottom Level -----*/
+/*Makes the drop down bar stick out above everything else*/
+.menu li:hover .sub-menu {
+    z-index:1;
+    opacity:1;
+}
+/*sets the drop down menu so it goes down*/
+.sub-menu {
+    width:160%;
+    padding:5px 0px;
+    position:absolute;
+    top:100%;
+    left:0px;
+    z-index:-1;
+    opacity:0;
+    transition:opacity linear 0.15s;
+    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+    background:#505256;
+}
+/*groups all links together going down and font size*/
+.sub-menu li {
+    display:block;
+    font-size:16px;
+}
+/*puts padding around the text in the drop down links*/
+.sub-menu li a {
+    padding:10px 30px;
+    display:block;
+}
