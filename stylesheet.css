@@ -13,7 +13,15 @@
  background-size: 80% 60%;
  background-color: #b3cccc;
 }
+#registrationpagetextboxes > h2{
+    margin-left: 1%;
+}
+#sellerpagetextboxes > h2{
+
+    margin-left: -2%;
+}
 .textboxes{
+color: #505256;
 margin-left: 40%;
 padding: 10px;
 font-size: 25px;

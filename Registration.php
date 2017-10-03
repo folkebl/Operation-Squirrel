@@ -1,7 +1,7 @@
 
 <html>
 
-<title>Great River Gaming Guild</title>
+<title>Registration</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
   </head>
@@ -13,21 +13,23 @@
             </ul>
         </nav>
     </div>
-
-		<div class = "textboxes" id = "sellerpagetextboxes">
+		<div class = "textboxes" id = "registrationpagetextboxes">
+            <h2>Registration</h2>
 			<form action="registration.php" method="post">
-				First Name: <input type="text" name="fname">
-				<br>
-				Last Name: <input type="text" name="lname">
-				<br>
-				Phone (Optional): <input type="text" name="phone">
-				<br>
-				Email (Optional): <input type="text" name="email">
-				<br>
-				<input type="submit" name="SubmitButton" value="submit">
-    </div>
-</form>
-    </body>
+				<label>First Name:</label><br>
+                <input type="text" name="fname"><br>
+				<label>Last Name:</label><br>
+                <input type="text" name="lname"><br>
+				<label>Phone (Optional):</label><br>
+                <input type="text" name="phone"><br>
+				<label>Email (Optional):</label><br>
+                <input type="text" name="email"><br><br>
+                <div>
+				    <input type="submit" name="SubmitButton" value="Submit">
+                </div>
+            </form>
+        </div>
+ </body>
 
 </html>
 
@@ -40,7 +42,7 @@ $db = 'Capstone';
 $db = mysqli_connect("$test", "$user", "$pass","$db");
 	if(isset($_POST["SubmitButton"]))
 	{
-$fname=$_POST["fname"];
+        $fname=$_POST["fname"];
 		$lname=$_POST["lname"];
 		$phone=$_POST["phone"];
         $email=$_POST["email"];

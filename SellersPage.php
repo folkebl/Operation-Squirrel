@@ -14,7 +14,7 @@
     </div>
 
 		<div class = "textboxes" id = "sellerpagetextboxes">
-      <label>Sell your Items</label><br>
+      <h2>Sell your Items</h2>
       <label>Seller ID:</label><br>
 			<input type="text" name="SellerID"><br>
 			<label>Description:</label><br>
