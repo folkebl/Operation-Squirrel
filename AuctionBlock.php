@@ -1,6 +1,6 @@
 
 <html>
-<title>Registration</title>
+<title>AuctionBlock</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
   </head>
@@ -12,19 +12,17 @@
             </ul>
         </nav>
     </div>
-		<div class = "textboxes" id = "registrationpagetextboxes">
-            <h2>Registration</h2>
-			<form action="registration.php" method="post">
-				<label>First Name:</label><br>
-                <input type="text" name="fname"></input><br>
-				<label>Last Name:</label><br>
-                <input type="text" name="lname"></input><br>
-				<label>Phone (Optional):</label><br>
-                <input type="text" name="phone"></input><br>
-				<label>Email (Optional):</label><br>
-                <input type="text" name="email"></input><br><br>
+		<div class = "textboxes" id = "AuctionBlockTestBoxes">
+            <h2>Auction Block</h2>
+			<form action="AuctionBlock.php" method="post">
+                <label>Item Number:</label><br>
+                <input type="number" name="ItemNumber"><br>
+				<label>Buyer Number:</label><br>
+                <input type="number" name="BuyerNumber"><br>
+				<label>Selling Price:</label><br>
+                <input type="number" name="SellingPrice"><br><br>
                 <div>
-				    <input type="submit" name="SubmitButton" value="Submit"></input>
+				    <input type="submit" name="SubmitButton" value="Submit">
                 </div>
             </form>
         </div>
@@ -44,11 +42,10 @@ $con = mysqli_connect('127.0.0.1', 'root','');
     }
 	if(isset($_POST["SubmitButton"]))
 	{
-        $fname=$_POST["fname"];
-		$lname=$_POST["lname"];
-		$phone=$_POST["phone"];
-        $email=$_POST["email"];
-        $sql = "INSERT INTO `registration`(`Seller ID`, `FirstName`, `LastName`, `Email`, `Phone`, `Buyer/seller`) VALUES ('','$fname','$lname','$email','$phone','0')";
+        $BuyerNumber=$_POST["BuyerNumber"];
+        $SellingPrice=$_POST["SellingPrice"];
+        $ItemNumber=$_POST["ItemNumber"];
+        $sql = "UPDATE `iteminformation` SET `BuyerNumber`= '$BuyerNumber',`SellingPrice`= '$SellingPrice' where `ItemNumber` = '$ItemNumber'";
         if(!mysqli_query($con,$sql))
         {
             echo "Data not inserted";
