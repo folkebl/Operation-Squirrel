@@ -40,7 +40,7 @@ $result = mysqli_query($con, $query);
         </nav>
     </div>
     <div class = "Headtext">
-          <h1>Recieve Money</h1>
+          <h1>Receive Money</h1>
     </div>
     <form action="Payin.php" method="POST">
      <div class = "searchbox"><br>
@@ -56,16 +56,30 @@ $result = mysqli_query($con, $query);
     <?php 
     if(isset($_POST['SearchButton']) && $_POST["namedropdown"] != "0")
     {
+        $userid = $_POST["namedropdown"];
     ?>
+     <div class = "displayname">
+           <?php 
+              $NameQuery = "SELECT `Payment`,`FirstName`, `LastName` from capstone.registration where `Seller ID` = $userid";
+              $Paymentresult = mysqli_query($con, $NameQuery);
+              $payment = mysqli_fetch_array($Paymentresult);
+              if($payment[0] == TRUE)
+                  $paymentyesno = "Has";
+             else
+                 $paymentyesno = "Has Not";
+             ?>
+          <p> <?php echo $payment[1]." ".$payment[2] . " " . $paymentyesno?> Paid </p>
+     </div>
     <div id = "table">
         <table>
             <tr>
                 <th>Item Number</th>
                 <th>Name of seller</th>
                 <th>Name of buyer</th>
-                <th>starting Bid</th>
+                <th>Starting Bid</th>
                 <th>Selling Price</th>
                 <th>For Charity</th> 
+                <th>  Total  </th>
             </tr>
 
             <?php 
@@ -75,18 +89,37 @@ $result = mysqli_query($con, $query);
             $NameQuery = "SELECT `FirstName`,`LastName` FROM `registration` where `Seller ID` = $NameOfUser";
             $NameResult = mysqli_query($con, $NameQuery);
             $Namerow = mysqli_fetch_array($NameResult);
+            $RunningTotal = 0;
             while($row = mysqli_fetch_array($result2)):;?>
             <?php
                 $NameQuery = "SELECT `FirstName`,`LastName` FROM `registration` where `Seller ID` = $row[1]";
                 $NameResultforseller = mysqli_query($con, $NameQuery);
                 $Namerowseller = mysqli_fetch_array($NameResultforseller);
+                $RunningTotal += $row[4];
             ?>
-            <tr><td><?php echo $row[0]?></td><td><?php echo $Namerowseller[0] . " " . $Namerowseller[1] ?></td><td><?php echo $Namerow[0] ." ". $Namerow[1]?></td><td><?php echo "$".$row[3]?></td><td><?php echo "$".$row[4]?></td><td><?php if($row[5] == true) echo "Yes"; else echo "No"; ?></td></tr>
+            <tr><td><?php echo $row[0]?></td><td><?php echo $Namerowseller[0] . " " . $Namerowseller[1] ?></td><td><?php echo $Namerow[0] ." ". $Namerow[1]?></td><td><?php echo "$".$row[3]?></td><td><?php echo "$".$row[4]?></td><td><?php if($row[5] == true) echo "Yes"; else echo "No"; ?></td><td><?php echo "$".$RunningTotal ?></td></tr>
             <?php endwhile?>
+            <tfoot>
+              <tr>
+                <th id = "total" colspan="6">Total Amount Owed:</th>
+                <td><?php echo "$".$RunningTotal?></td>
+            </tr>
+            </tfoot>
         </table>
+        <form action="Payin.php" method="POST">
+        <div id = "confirmpayment">
+            <button type="submit" name = "confirmpayment"> Confirm Payment</button>
+        </div>
+        </form>
        <?php
     }
     ?> 
     </div>
   </body>
 </html>
+<?php
+ if(isset($_POST['confirmbutton']))
+ {
+    $Confirmpayquery = "UPDATE capstone.registration SET `payment` = true WHERE `Seller ID` = $row[1]";
+ }
+?>
