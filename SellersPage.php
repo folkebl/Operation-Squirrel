@@ -1,4 +1,10 @@
-
+<!DOCTYPE html>
+<?php
+require("Query.php");
+$user = "root";
+$pass = "";
+$dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
+?>
 <html>
 <title>Sell Items</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
@@ -12,12 +18,21 @@
             </ul>
         </nav>
     </div>
-
+    <div class="Headtext">
+        <h1>Sell your Items</h1>
+    </div>
 		<div class = "textboxes" id = "sellerpagetextboxes">
-      <h2>Sell your Items</h2>
       <form action="SellersPage.php" method="post">
-      <label>Seller ID:</label><br>
-			<input type="text" name="SellerID"></input><br>
+      <label>Seller Name:</label><br>
+			<!-- <input type="text" name="SellerID"></input><br> -->
+            <select name="namedropdown" id="namedropregistration">
+            <option name = "DropDown" value = "0">Select Name:</option>
+             <?php
+              $stmt = $queryclass->getnamequery();
+              while($row = $stmt->fetch()):; ?>
+                <option name = "DropDown" value="<?php echo $row[0]?>"><?php echo $row[1] . " " . $row[2];?></option>
+            <?php endwhile;?>
+            </select><br>
 			<label>Description:</label><br>
       <textarea rows="3" cols="30" name="Description"></textarea><br>
 			<label>Condition:</label> <br>
@@ -26,7 +41,7 @@
       <input type="text" name="SellerNotes"></input><br>
       <label>Starting Bid:</label><br>
       <input type="text" name="StartingBid"></input><br>
-      <label>Charity:</label>
+      <label>Charity:</label><br>
       <input type="checkbox" name="Charity"></input><br>
       <input type="submit" name="Done" value="Done"></input><br><br>
       <input type="submit" name="Addanotheritem" value = "Add Another Item"></input><br>
@@ -49,9 +64,9 @@ $con = mysqli_connect('127.0.0.1', 'root','');
     if(isset($_POST["Done"]))
 	{
     echo 'post';
-        $SellerID=$_POST["SellerID"];
-		    $Description=$_POST["Description"];
-		    $Condition=$_POST["Condition"];
+        $SellerID=$_POST["namedropdown"];
+		$Description=$_POST["Description"];
+		$Condition=$_POST["Condition"];
         $SellerNotes=$_POST["SellerNotes"];
         $StartingBid=$_POST["StartingBid"];
         if(isset($_POST["Charity"]))

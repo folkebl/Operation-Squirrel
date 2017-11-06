@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <?php
 session_start();
-//require("Databaseconfig.php");
-$con = mysqli_connect('127.0.0.1', 'root','');
-if(!$con)
-{
-    echo 'not connected to the server';
-}
-if(!mysqli_select_db($con,'capstone'))
-{
-    echo 'database not selected';
-}
-$query = "SELECT `Seller ID`, `FirstName`, `LastName` FROM `registration`";
-$result = mysqli_query($con, $query);
+require("Query.php");
+$user = "root";
+$pass = "";
+$dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
+$RunningTotal = 0;
 ?>
 <html>
   <head>
@@ -45,7 +38,9 @@ $result = mysqli_query($con, $query);
      <div class = "searchbox"><br>
         Select Seller: <select name="namedropdown" id="namedrop">
             <option name = "DropDown" value = "0">Select Name:</option>
-             <?php while($row = mysqli_fetch_array($result)):;?>
+             <?php
+              $stmt = $queryclass->getnamequery();
+              while($row = $stmt->fetch()):; ?>
                 <option name = "DropDown" value="<?php echo $row[0]?>"><?php echo $row[1] . " " . $row[2];?></option>
             <?php endwhile;?>
          </select>
@@ -55,37 +50,92 @@ $result = mysqli_query($con, $query);
     <?php 
     if(isset($_POST['SearchButton']) && $_POST["namedropdown"] != "0")
     {
+        $userid = $_POST["namedropdown"];
     ?>
+        <div class = "displayname">
+           <?php 
+              $beenpaidQuery = "SELECT `Paymentforitemssold`,`FirstName`, `LastName` from capstone.registration where `Seller ID` = :userid";
+              $beenpaidQuerystmt = $dbh->prepare($beenpaidQuery);
+              $beenpaidQuerystmt->bindparam(':userid',$userid);
+              $beenpaidQuerystmt->execute();
+              $payment = $beenpaidQuerystmt->fetch();
+            //   $Paymentresult = mysqli_query($con, $NameQuery);
+            //   $payment = mysqli_fetch_array($Paymentresult);
+              if($payment[0] == TRUE)
+                  $paymentyesno = "has";
+             else
+                 $paymentyesno = "has not";
+             ?>
+          <p> <?php echo $payment[1]." ".$payment[2] . " " . $paymentyesno?> been paid for the items sold </p>
+     </div>
     <div id = "table">
         <table>
             <tr>
                 <th>Item Number</th>
                 <th>Name of seller</th>
                 <th>Name of buyer</th>
-                <th>starting Bid</th>
+                <th>Starting Bid</th>
                 <th>Selling Price</th>
-                <th>For Charity</th> 
+                <th>For Charity</th>
+                <th>  Total  </th> 
             </tr>
 
-            <?php 
-            $NameOfUser=$_POST["namedropdown"];
-            $query = "SELECT `ItemNumber`, `sellerNumber`, `BuyerNumber`, `StartingBid`, `SellingPrice`, `Charity` FROM `iteminformation` where sellerNumber = $NameOfUser";
-            $result2 = mysqli_query($con, $query);
-            $NameQuery = "SELECT `FirstName`,`LastName` FROM `registration` where `Seller ID` = $NameOfUser";
-            $NameResult = mysqli_query($con, $NameQuery);
-            $Namerow = mysqli_fetch_array($NameResult);
-            while($row = mysqli_fetch_array($result2)):;?>
             <?php
-                $NameQuery = "SELECT `FirstName`,`LastName` FROM `registration` where `Seller ID` = $row[2]";
-                $NameResultforseller = mysqli_query($con, $NameQuery);
-                $Namerowbuyer = mysqli_fetch_array($NameResultforseller);
+            //Gets the table data where base on the name selected.
+            $NameOfUser=$_POST["namedropdown"];
+            $querytabledata = "SELECT `ItemNumber`, `sellerNumber`, `BuyerNumber`, `StartingBid`, `SellingPrice`, `Charity` FROM `iteminformation` where sellerNumber = :nameofuser";
+            $tablestatement = $dbh->prepare($querytabledata);
+            $tablestatement->bindparam(':nameofuser',$NameOfUser);
+            $tablestatement->execute();
+            //Gets the name of the seller
+            $NameQuery = "SELECT `FirstName`,`LastName` FROM `registration` where `Seller ID` = :nameofuser";
+            $statement = $dbh->prepare($NameQuery);
+            $statement->bindparam(':nameofuser',$NameOfUser);
+            $statement->execute();
+            $namerowseller = $statement->fetch();
+
+            while($row = $tablestatement->fetch()):;?>
+            <?php
+                // gets the buyers name
+                 $buyernamequery = "SELECT `FirstName`,`LastName` FROM `registration` where `Seller ID` = :buyernumber";
+                 $buyernamestatement = $dbh->prepare($buyernamequery);
+                 $buyernamestatement->bindparam(':buyernumber',$row[2]);
+                 $buyernamestatement->execute();
+                 $namerowbuyer = $buyernamestatement->fetch();
+                 if(!($row[5]))
+                 $RunningTotal += $row[4];
+                 //
+
             ?>
-            <tr><td><?php echo $row[0]?></td><td><?php echo $Namerow[0] ." ". $Namerow[1]?></td><td><?php echo $Namerowbuyer[0] . " " . $Namerowbuyer[1]?></td><td><?php echo "$".$row[3]?></td><td><?php echo "$".$row[4]?></td><td><?php if($row[5] == true) echo "Yes"; else echo "No"; ?></td></tr>
+            <tr><td><?php echo $row[0]?></td><td><?php echo $namerowseller[0] . " " . $namerowseller[1]?></td><td><?php  echo $namerowbuyer[0] ." ". $namerowbuyer[1]?></td><td><?php echo "$".$row[3]?></td><td><?php echo "$".$row[4]?></td><td><?php if($row[5] == true) echo "Yes"; else echo "No"; ?></td><td><?php echo "$".$RunningTotal ?></td></tr>
             <?php endwhile?>
+            <tfoot>
+              <tr>
+                <th id = "total" colspan="6">Total Amount Owed:</th>
+                <td><?php echo "$".$RunningTotal?></td>
+            </tr>
+            </tfoot>
         </table>
+        <form action="Payout.php" method="POST">
+        <div id = "confirmpayment">
+            <button type="submit" name = "confirmbutton"> Confirm Payment</button>
+        </div>
+        </form>
        <?php
     }
     ?> 
     </div>
   </body>
 </html>
+
+<?php
+ if(isset($_POST['confirmbutton']))
+ {
+    $Confirmpayquery = "UPDATE `capstone`.`registration` SET`Paymentforitemssold` = TRUE WHERE `Seller ID` = :userid";
+    $Confirmpaystmt = $dbh->prepare($Confirmpayquery);
+    $Confirmpaystmt->bindparam(':userid',$NameOfUser);
+    $Confirmpaystmt->execute();
+    echo $NameOfUser;
+}
+?>
+
