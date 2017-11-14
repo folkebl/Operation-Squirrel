@@ -1,163 +1,200 @@
 /* Determines the background immage and placement*/
- #homepage{
-  background-image: url(Logo.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: 80% 60%;
-  background-color: #b3cccc;
-}
-#RegistrationPage{
- background-position: center;
- background-attachment: fixed;
- background-size: 80% 60%;
- background-color: #b3cccc;
-}
-#registrationpagetextboxes > h2{
-    margin-left: 1%;
-}
-#sellerpagetextboxes > h2{
+#homepage{
+    
+      background-image: url(Logo.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      background-size: 80% 60%;
+      background-color: #a1bfb9;
+    }
+    #RegistrationPage{
+     background-position: center;
+     background-attachment: fixed;
+     background-size: 80% 60%;
+     background-color: #a1bfb9;
+    }
+    #registrationpagetextboxes > h2{
+        margin-left: 1%;
+    }
+    .textboxes{
+    color: #e15531;
+    text-align: center;
 
-    margin-left: -2%;
-}
-.textboxes{
-color: #505256;
-margin-left: 40%;
-padding: 10px;
-font-size: 25px;
-font-family:Arvo;
-}
-.textboxes input{
-  min-width: 100px;
-  font-size: 20px;
-  width: 250px;
-}
-.textboxes textarea{
-  font-size: 20px;
-  width: 250px;
-}
-/*This stops bug where if parent elemet has a floated child element it will disappear*/
-.clearfix:after {
-    display:block;
-    clear:both;
-}
-/*----- Menu Outline -----*/
-/*This determines the height, width, shadow and opacity, and background color*/
-.menu-wrap{
-    width:100%;
-    height:54.5px;
-    box-shadow:0px 1px 3px rgba(0,0,0,0.2);
-    background:#505256;
-}
-/*This determins the the width for the regular menu items and
-determins links height and width from top and left of page */
-.menu {
-    width:1000px;
-    margin:auto 0px;
-}
-/*This has the font style, makes it so no markers are shown and the margin for the links */
-.menu li {
-    margin:0px;
-    list-style:none;
+    padding: 10px;
+    font-size: 25px;
     font-family:Arvo;
-}
-/*controls the color of the links and gets rid of the link underline*/
-.menu a {
-    transition:all linear 0.15s;
-    color: #b3cccc;
-    text-decoration: none;
-    font-size: 20px
-}
-/*changes the background color of the links on hover*/
-.menu a:hover{
-  background:#6a6d72;
-}
-/*arrow size*/
-.menu .arrow {
-    font-size:11px;
-    line-height:0%;
-}
+    }
+    .textboxes input{
+      min-width: 100px;
+      font-size: 20px;
+      width: 250px;
+    }
+    #namedropregistration{
+        width: 250px;
+        font-size: 20px;
+    }
+    .textboxes textarea {
+      font-size: 20px;
+      width: 250px;
+    }
+    /*This stops bug where if parent elemet has a floated child element it will disappear*/
+    .clearfix:after {
+        display:block;
+        clear:both;
+    }
+    /*----- Menu Outline -----*/
+    /*This determines the height, width, shadow and opacity, and background color*/
+    .menu-wrap{
+        width:100%;
+        height:54.5px;
+        box-shadow:0px 1px 3px rgba(0,0,0,0.2);
+        background-image: url(geo3..jpg);
+        background-repeat: repeat;
+        
+    
+    }
+    /*This determins the the width for the regular menu items and
+    determins links height and width from top and left of page */
+    .menu {
+        width:1000px;
+        margin:auto 0px;
+    
+    }
+    /*This has the font style, makes it so no markers are shown and the margin for the links */
+    .menu li {
+        margin:0px;
+        list-style:none;
+         font-style:bold;
+        font-family:Arvo;
+    
+    }
+    /*controls the color of the links and gets rid of the link underline*/
+    .menu a {
+        transition:all linear 0.15s;
+        color: #e15531;
+        text-decoration: none;
+        font-size: 20px
+    }
+    /*changes the background color of the links on hover*/
+    .menu a:hover{
+      background:#dee7e7;
+    }
+    /*arrow size*/
+    .menu .arrow {
+        font-size:11px;
+        line-height:0%;
+    }
+    
+    /*----- Top Level -----*/
+    /*this floats the main icons to the left, puts them next to each other  */
+    .menu > ul > li {
+       float:left;
+        display:inline-block;
+        position:relative;
+        font-size:20px;
+    }
+    /*sets the padding */
+    .menu > ul > li > a {
+        padding:15px 40px;
+        display:inline-block;
+        text-shadow:0px 1px 0px rgba(0,0,0,0.4);
+    }
+    /*----- Bottom Level -----*/
+    /*Makes the drop down bar stick out above everything else*/
+    /* .menu li:hover .sub-menu {
+        z-index:1;
+        opacity:1;
+    } */
+    /*sets the drop down menu so it goes down*/
+    .sub-menu {
+        width:160%;
+        padding:5px 0px;
+        position:absolute;
+        top:100%;
+        left:0px;
+        z-index:-1;
+        opacity:0;
+        transition:opacity linear 0.15s;
+        box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+        background:#81b4b3;
+    }
+    /*groups all links together going down and font size*/
+    .sub-menu li {
+        display:block;
+        font-size:16px;
+    }
+    /*puts padding around the text in the drop down links*/
+    .sub-menu li a {
+        padding:10px 30px;
+        display:block;
+    }
+    .Headtext{
+        text-align: center;
+        color: #e15531;
+    }
+    table {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    table {  
+        color: #333;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 800px; 
+        border-collapse: 
+        collapse; border-spacing: 0; 
+    }
+    
+    td, th {  
+        border: 1px solid transparent; /* No more visible border */
+        height: 30px; 
+        transition: all 0.3s;  /* Simple transition for hover effect */
+    }
+    
+    th {  
+        background: #DFDFDF;  /* Darken header a bit */
+        font-weight: bold;
+    }
+    
+    td {  
+        background: #FAFAFA;
+        text-align: center;
+    }
+    
+    /* Cells in even rows (2,4,6...) are one color */        
+    tr:nth-child(even) td { background: #F1F1F1; }   
+    
+    /* Cells in odd rows (1,3,5...) are another (excludes header cells)  */        
+    tr:nth-child(odd) td { background: #FEFEFE; }  
 
-/*----- Top Level -----*/
-/*this floats the main icons to the left, puts them next to each other  */
-.menu > ul > li {
-   float:left;
-    display:inline-block;
-    position:relative;
-    font-size:20px;
-}
-/*sets the padding */
-.menu > ul > li > a {
-    padding:15px 40px;
-    display:inline-block;
-    text-shadow:0px 1px 0px rgba(0,0,0,0.4);
-}
-/*----- Bottom Level -----*/
-/*Makes the drop down bar stick out above everything else*/
-.menu li:hover .sub-menu {
-    z-index:1;
-    opacity:1;
-}
-/*sets the drop down menu so it goes down*/
-.sub-menu {
-    width:160%;
-    padding:5px 0px;
-    position:absolute;
-    top:100%;
-    left:0px;
-    z-index:-1;
-    opacity:0;
-    transition:opacity linear 0.15s;
-    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
-    background:#505256;
-}
-/*groups all links together going down and font size*/
-.sub-menu li {
-    display:block;
-    font-size:16px;
-}
-/*puts padding around the text in the drop down links*/
-.sub-menu li a {
-    padding:10px 30px;
-    display:block;
-}
-.Headtext{
-    text-align: center;
-    color: #505256
-}
-table {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-table {  
-    color: #333;
-    font-family: Helvetica, Arial, sans-serif;
-    width: 640px; 
-    border-collapse: 
-    collapse; border-spacing: 0; 
-}
-
-td, th {  
-    border: 1px solid transparent; /* No more visible border */
-    height: 30px; 
-    transition: all 0.3s;  /* Simple transition for hover effect */
-}
-
-th {  
-    background: #DFDFDF;  /* Darken header a bit */
-    font-weight: bold;
-}
-
-td {  
-    background: #FAFAFA;
-    text-align: center;
-}
-
-/* Cells in even rows (2,4,6...) are one color */        
-tr:nth-child(even) td { background: #F1F1F1; }   
-
-/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */        
-tr:nth-child(odd) td { background: #FEFEFE; }  
+    #total{
+text-align: right;
+    }
+    
+    #confirmpayment{
+text-align: center;
+    }
+    button{
+        color: #e15531;
+        background-color: #a1bfb9;
+        transition-duration: 0.4s;
+        border: 2px solid #e15531;
+        font-size: 35px;
+        border-radius: 10px;
+        text-decoration: none;
+        outline:0;
+    }
+    
+    button:hover {
+        color: #a1bfb9;
+        background-color: #e15531; 
+        border: 2px solid #a1bfb9;
+    }
+    .displayname{
+        text-align: center;
+        font-size: 25px;
+        color: black;
+    }
