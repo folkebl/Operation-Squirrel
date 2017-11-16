@@ -1,18 +1,56 @@
 /* Determines the background immage and placement*/
+
 #homepage{
-    
-      background-image: url(Logo.jpg);
       background-repeat: no-repeat;
       background-position: center;
       background-attachment: fixed;
       background-size: 80% 60%;
       background-color: #a1bfb9;
     }
+    @import url(https://fonts.googleapis.com/css?family=Lobster);
+    
+    body {
+      background: #C76750;
+      font-family: 'Lobster', cursive;
+    }
+    .circle {
+      margin: auto;
+      height: 300px;
+      width: 300px;
+      border-radius: 100%;
+      background: #e15531;
+      margin-top: 150px;
+    }
+    
+   .circle~h1 {
+      color: #D5E2D6;
+      text-align: center;
+      line-height: 50px;
+      margin-top: -350px;
+      -moz-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+    -webkit-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+    -o-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+    -ms-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+    transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+      /*-----------------------*/
+      text-shadow: 1px 1px #81b4b3, 2px 2px #81b4b3, 3px 3px #81b4b3, 4px 4px #81b4b3, 5px 5px #81b4b3, 6px 6px #81b4b3, 7px 7px #81b4b3, 8px 8px #117C7C, 9px 9px #117C7C, 10px 10px #117C7C, 11px 11px #117C7C, 12px 12px #117C7C, 13px 13px #117C7C, 14px 14px #4A744D, 15px 15px #4A744D, 16px 16px #4A744D, 17px 17px #4A744D, 18px 18px #4A744D, 19px 19px #4A744D, 20px 20px #4A744D, 21px 21px #4A744D, 22px 22px #4A744D, 23px 23px #4A744D, 24px 24px #4A744D, 25px 25px #4A744D, 26px 26px 6px #06520C;
+      
+    }
+    span:nth-child(3), span:nth-child(7) { 
+        font-size: 60px;
+        }
+        
+        span:nth-child(1), span:nth-child(9), span:nth-child(5)  {
+          font-size: 110px;
+        }
     #RegistrationPage{
      background-position: center;
      background-attachment: fixed;
      background-size: 80% 60%;
      background-color: #a1bfb9;
+    }
+    .pagecolor{
+        background-color: #a1bfb9;
     }
     #registrationpagetextboxes > h2{
         margin-left: 1%;
@@ -20,7 +58,6 @@
     .textboxes{
     color: #e15531;
     text-align: center;
-
     padding: 10px;
     font-size: 25px;
     font-family:Arvo;
@@ -102,10 +139,10 @@
     }
     /*----- Bottom Level -----*/
     /*Makes the drop down bar stick out above everything else*/
-    /* .menu li:hover .sub-menu {
+    .menu li:hover .sub-menu {
         z-index:1;
         opacity:1;
-    } */
+    }
     /*sets the drop down menu so it goes down*/
     .sub-menu {
         width:160%;
@@ -171,11 +208,11 @@
     tr:nth-child(odd) td { background: #FEFEFE; }  
 
     #total{
-text-align: right;
+        text-align: right;
     }
     
-    #confirmpayment{
-text-align: center;
+    .confirmpayment{
+        text-align: center;
     }
     button{
         color: #e15531;
@@ -197,4 +234,8 @@ text-align: center;
         text-align: center;
         font-size: 25px;
         color: black;
+    }
+    .reportstext p{
+        text-align: center;
+        font-size: 20px;
     }

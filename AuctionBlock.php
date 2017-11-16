@@ -12,8 +12,10 @@
             </ul>
         </nav>
     </div>
+        <div class = "headtext">
+            <h1>Auction Block</h1>
+        </div>
 		<div class = "textboxes" id = "AuctionBlockTestBoxes">
-            <h2>Auction Block</h2>
 			<form action="AuctionBlock.php" method="post">
                 <label>Item Number:</label><br>
                 <input type="number" name="ItemNumber"><br>

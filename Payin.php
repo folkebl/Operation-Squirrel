@@ -19,6 +19,8 @@ $result = mysqli_query($con, $query);
     <title>Great River Gaming Guild</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="payin-out.js"></script>
   </head>
   <body id="RegistrationPage">
     <div class="menu-wrap">
@@ -42,78 +44,19 @@ $result = mysqli_query($con, $query);
     <div class = "Headtext">
           <h1>Receive Money</h1>
     </div>
-    <form action="Payin.php" method="POST">
      <div class = "searchbox"><br>
-        Select Buyer: <select name="namedropdown" id="namedrop">
+        Select Buyer: <select name="namedropdownpayin" id="namedroppayin">
             <option name = "DropDown" value = "0">Select Name:</option>
              <?php while($row = mysqli_fetch_array($result)):;?>
                 <option name = "DropDown" value="<?php echo $row[0]?>"><?php echo $row[1] . " " . $row[2];?></option>
             <?php endwhile;?>
          </select>
-        <input type = "submit" name = "SearchButton" value = "Search"></input>
     </div>
-    </form>
-    <?php 
-    if(isset($_POST['SearchButton']) && $_POST["namedropdown"] != "0")
-    {
-        $userid = $_POST["namedropdown"];
-    ?>
-     <div class = "displayname">
-           <?php 
-              $NameQuery = "SELECT `Payment`,`FirstName`, `LastName` from capstone.registration where `Seller ID` = $userid";
-              $Paymentresult = mysqli_query($con, $NameQuery);
-              $payment = mysqli_fetch_array($Paymentresult);
-              if($payment[0] == TRUE)
-                  $paymentyesno = "Has";
-             else
-                 $paymentyesno = "Has Not";
-             ?>
-          <p> <?php echo $payment[1]." ".$payment[2] . " " . $paymentyesno?> Paid </p>
+     <div class = "displayname" id = "displaynamepayinajax">
+        
      </div>
-    <div id = "table">
-        <table>
-            <tr>
-                <th>Item Number</th>
-                <th>Name of seller</th>
-                <th>Name of buyer</th>
-                <th>Starting Bid</th>
-                <th>Selling Price</th>
-                <th>For Charity</th> 
-                <th>  Total  </th>
-            </tr>
+    <div id = "payintable">
 
-            <?php 
-            $NameOfUser=$_POST["namedropdown"];
-            $query = "SELECT `ItemNumber`, `sellerNumber`, `BuyerNumber`, `StartingBid`, `SellingPrice`, `Charity` FROM `iteminformation` where BuyerNumber = $NameOfUser";
-            $result2 = mysqli_query($con, $query);
-            $NameQuery = "SELECT `FirstName`,`LastName` FROM `registration` where `Seller ID` = $NameOfUser";
-            $NameResult = mysqli_query($con, $NameQuery);
-            $Namerow = mysqli_fetch_array($NameResult);
-            $RunningTotal = 0;
-            while($row = mysqli_fetch_array($result2)):;?>
-            <?php
-                $NameQuery = "SELECT `FirstName`,`LastName` FROM `registration` where `Seller ID` = $row[1]";
-                $NameResultforseller = mysqli_query($con, $NameQuery);
-                $Namerowseller = mysqli_fetch_array($NameResultforseller);
-                $RunningTotal += $row[4];
-            ?>
-            <tr><td><?php echo $row[0]?></td><td><?php echo $Namerowseller[0] . " " . $Namerowseller[1] ?></td><td><?php echo $Namerow[0] ." ". $Namerow[1]?></td><td><?php echo "$".$row[3]?></td><td><?php echo "$".$row[4]?></td><td><?php if($row[5] == true) echo "Yes"; else echo "No"; ?></td><td><?php echo "$".$RunningTotal ?></td></tr>
-            <?php endwhile?>
-            <tfoot>
-              <tr>
-                <th id = "total" colspan="6">Total Amount Owed:</th>
-                <td><?php echo "$".$RunningTotal?></td>
-            </tr>
-            </tfoot>
-        </table>
-        <form action="Payin.php" method="POST">
-        <div id = "confirmpayment">
-            <button type="submit" name = "confirmpayment"> Confirm Payment</button>
-        </div>
-        </form>
-       <?php
-    }
-    ?> 
     </div>
   </body>
 </html>

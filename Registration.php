@@ -12,8 +12,10 @@
             </ul>
         </nav>
     </div>
+        <div class = "headtext">
+            <h1>Registration</h1>
+        </div>
 		<div class = "textboxes" id = "registrationpagetextboxes">
-            <h2>Registration</h2>
 			<form action="registration.php" method="post">
 				<label>First Name:</label><br>
                 <input type="text" name="fname"></input><br>
@@ -48,7 +50,7 @@ $con = mysqli_connect('127.0.0.1', 'root','');
 		$lname=$_POST["lname"];
 		$phone=$_POST["phone"];
         $email=$_POST["email"];
-        $sql = "INSERT INTO `registration`(`Seller ID`, `FirstName`, `LastName`, `Email`, `Phone`, `Buyer/seller`) VALUES ('','$fname','$lname','$email','$phone','0')";
+        $sql = "INSERT INTO `registration`(`Seller ID`, `FirstName`, `LastName`, `Email`, `Phone`, `Buyer/seller`,`payment`,`Paymentforitemssold`) VALUES ('','$fname','$lname','$email','$phone','0','0','0')";
         if(!mysqli_query($con,$sql))
         {
             echo "Data not inserted";
