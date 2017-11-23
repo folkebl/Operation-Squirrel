@@ -41,12 +41,12 @@
             $itemcounter++;
             $RunningTotal += $row[4];
             $itemTotal += $row[4];
-            if($itemcounter >= 6 && $itemcounter <= 7)//15
+            if($itemcounter >= 6 && $itemcounter <= 15)
                 {
                 $feetotal = $feetotal + .25;
                 $fee = $feetotal;
                 }
-            elseif($itemcounter >= 8 && $itemcounter <= 25) //16
+            elseif($itemcounter >= 16 && $itemcounter <= 25)
                 {
                     $feetotal = $feetotal + .50;
                     $fee = $feetotal;
