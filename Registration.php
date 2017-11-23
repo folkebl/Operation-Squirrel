@@ -57,7 +57,9 @@ $con = mysqli_connect('127.0.0.1', 'root','');
         }
         else
         {
+            $id = mysqli_insert_id($con);
             echo "data inserted";
+            require("ZebraRegister.php");
         }
     }
 ?>
