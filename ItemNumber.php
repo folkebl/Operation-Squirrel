@@ -1,14 +1,5 @@
 <?php
-
-require("../Query.php");
-$user = "root";
-$pass = "";
-$dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
-
-$query= "SELECT BuyerNumber FROM capstone WHERE SellerID=$SellerId";
-
-?>
-
+$id = $_GET["id"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +17,7 @@ $query= "SELECT BuyerNumber FROM capstone WHERE SellerID=$SellerId";
     </div>
 		<div class = "textboxes">
             <h1>Buyer/Seller Number</h1>
-            <?php echo $query ?>
+            <?php echo $id ?>
       </div>
  </body>
 </html>
