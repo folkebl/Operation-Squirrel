@@ -38,7 +38,7 @@ echo
             $paid = "Yes"; 
          else
             $paid = "No";
-         echo "<tr><td>".$row[0]."</td><td>".$namerowseller[0] . " " . "$namerowseller[1]"."</td><td>"."$namerowbuyer[0]"." ". "$namerowbuyer[1]"."</td><td>"."$".$row[3]."</td><td>"."$".$row[4]."</td><td>".$paid."</td><td>"."$".$RunningTotal."</td></tr>";
+         echo "<tr><td>".$row[0]."</td><td>".$namerowseller[0] . " " . "$namerowseller[1]"."</td><td>"."$namerowbuyer[0]"." ". "$namerowbuyer[1]"."</td><td>"."$".$row[3]."</td><td>"."$".$row[4]."</td><td>".$paid."</td><td>"."$".$row[4]."</td></tr>";
         endwhile;   
 
         echo "<tfoot>

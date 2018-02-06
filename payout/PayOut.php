@@ -5,7 +5,11 @@ require("../Query.php");
 ?>
 <html>
   <head>
-                                                                                                                                                                                      
+  <title>Great River Gaming Guild</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../payin-out.js"></script>                                                                                                                                                                       
   </head>
   <body id="RegistrationPage">
     <div class="menu-wrap">

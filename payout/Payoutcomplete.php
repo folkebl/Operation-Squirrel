@@ -15,5 +15,4 @@
        $paymentyesno = "has not";
 
     echo $payment[1]." ".$payment[2] . " " . $paymentyesno . " been paid for the items sold";
-
 ?>
