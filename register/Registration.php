@@ -57,7 +57,8 @@ $con = mysqli_connect('127.0.0.1', 'root','');
         }
         else
         {
-            $id = mysqli_insert_id($con);
+            $id = mysqli_insert_id($con); // gets the last insert id
+            echo $id;
             echo "data inserted";
             require("ZebraRegister.php");
         }

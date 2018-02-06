@@ -1,7 +1,4 @@
 <?php
-
-
-
 $zebraCode = <<<ZEBRA
 CT~~CD,~CC^~CT~
 ^XA~TA000~JSN^LT0^MNN^MTD^PON^PMN^LH0,0^JMA^PR5,5~SD15^JUS^LRN^CI0^XZ
@@ -15,13 +12,10 @@ $zebraCode = <<<ZEBRA
 ^FD>$id^FS
 ^FT24,781^A0N,45,45^FH\^FDName: $fname $lname^FS
 ^PQ1,0,1,Y^XZ
-
-
-
 ZEBRA;
 
 // printer connection variables
-$printerIpAddress = "192.168.2.9";
+$printerIpAddress = "192.168.2.2";
 $port = "9100";
 $password = "1234";
 

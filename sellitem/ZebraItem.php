@@ -28,7 +28,7 @@ $zebraCode = <<<ZEBRA
 ZEBRA;
 
 // printer connection variables
-$printerIpAddress = "192.168.2.9";
+$printerIpAddress = "192.168.2.2";
 $port = "9100";
 $password = "1234";
 

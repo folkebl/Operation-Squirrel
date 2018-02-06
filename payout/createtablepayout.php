@@ -62,7 +62,7 @@
              $paid = "No";
         echo "<tr><td>".$row[0]."</td><td>".$namerowseller[0] . " " . "$namerowseller[1]"."</td><td>"."$namerowbuyer[0]"." ". "$namerowbuyer[1]"."</td><td>"."$".$row[3]."</td><td>"."$".$row[4]."</td><td>".$paid."</td><td>"."$".$fee."</td><td>"."$".$itemTotal."</td></tr>";
         endwhile;
-        $overallTotal = ($RunningTotal + $feetotal);
+        $overallTotal = ($RunningTotal - $feetotal);
     echo "<tfoot>
         <tr>
             <th id = \"total\" colspan=\"6\">Totals:</th>
