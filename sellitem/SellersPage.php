@@ -9,6 +9,10 @@ $dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
 <title>Sell Items</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
     <link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+    <script src="sellitem.js"></script>    
   </head>
   <body id="RegistrationPage">
     <div class="menu-wrap">
@@ -22,9 +26,7 @@ $dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
         <h1>Sell your Items</h1>
     </div>
 		<div class = "textboxes" id = "sellerpagetextboxes">
-      <form action="SellersPage.php" method="post">
-      <label>Seller Name:</label><br>
-			<!-- <input type="text" name="SellerID"></input><br> -->
+            <label>Seller Name:</label><br>
             <select name="namedropdown" id="namedropregistration">
             <option name = "DropDown" value = "0">Select Name:</option>
              <?php
@@ -34,67 +36,19 @@ $dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
             <?php endwhile;?>
             </select><br>
 			<label>Description:</label><br>
-      <textarea rows="3" cols="30" name="Description"></textarea><br>
+      <textarea rows="3" cols="30" name="Description" id = "desc"></textarea><br>
 			<label>Condition:</label> <br>
-      <input type="text" name="Condition"></input><br>
+      <input type="text" name="Condition"id = "condition"></input><br>
 			<label>Seller Notes:</label><br>
-      <input type="text" name="SellerNotes"></input><br>
+      <input type="text" name="SellerNotes"id = "sellernotes"></input><br>
       <label>Starting Bid:</label><br>
-      <input type="text" name="StartingBid"></input><br>
+      <input type="text" name="StartingBid"id = "stratingbid"></input><br>
       <label>Charity:</label><br>
-      <input type="checkbox" name="Charity"></input><br>
-      <input type="submit" name="Done" value="Done"></input><br><br>
-      <input type="submit" name="Addanotheritem" value = "Add Another Item"></input><br>
-      </form>
+      <input type="checkbox" name="Charity"id = "charity"></input><br>
+      <input type="submit" name="Done" value="Done" id = "itemdone"></input><br>
     </div>
-		</form>
+    <div id = "itemdialogbox" style = "display:none">
+            <h3>Press done or add Another item and a tag will be printerd.</h3>
+    </div>
   </body>
 </html>
-<?php
-$con = mysqli_connect('127.0.0.1', 'root','');
-    if(!$con)
-    {
-        echo 'not connected to the server';
-    }
-    if(!mysqli_select_db($con,'capstone'))
-    {
-        echo 'database not selected';
-    }
-    if(isset($_POST["Done"]))
-	{
-    echo 'post';
-        $SellerID=$_POST["namedropdown"];
-		$Description=$_POST["Description"];
-		$Condition=$_POST["Condition"];
-        $SellerNotes=$_POST["SellerNotes"];
-        $StartingBid=$_POST["StartingBid"];
-        if(isset($_POST["Charity"]))
-        {
-          $Charity=true ;
-          $Charitytext = "Yes";
-        }
-        else
-        {
-          $Charity=false;
-          $Charitytext = "No";
-        }
-        $sql = "INSERT INTO `iteminformation`(`ItemNumber`, `sellerNumber`,`BuyerNumber`, `Description`, `ItemCondition`, `SellersNotes`, `StartingBid`,`SellingPrice`, `Charity`) VALUES ('','$SellerID','','$Description','$Condition','$SellerNotes','$StartingBid','','$Charity')";
-        if(!mysqli_query($con,$sql))
-        {
-            echo "Data not inserted";
-        }
-        else
-        {
-            $id = mysqli_insert_id($con);
-            $query = "SELECT `FirstName`, `LastName` FROM `registration` WHERE `Seller ID` = :id ";
-            $querystmt = $dbh->prepare($query);
-            $querystmt->bindparam(':id',$SellerID);
-            $querystmt->execute();
-            $row = $querystmt->fetch();
-            $fname = $row[0];
-            $lname = $row[1];
-            require("ZebraItem.php");
-            echo "data inserted";
-        }
-    }
-?>
