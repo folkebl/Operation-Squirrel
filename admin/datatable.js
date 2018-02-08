@@ -35,8 +35,18 @@ function usertablerowclick(data1)
         modal: true,
         buttons: [
           {
-            text: "Close",
+            text: "Reprint Tag",
             click: function() {
+              var id = data1[0];
+              $.ajax({
+                url:'zebraregisterajax.php',
+                method:'POST',
+                data: {id:id},
+                dataType: "html",
+                success: function(data){
+                    console.log(data);
+                                   }
+            });
               $( this ).dialog("close");
             }
           },
@@ -60,6 +70,13 @@ function usertablerowclick(data1)
                     location.reload();
                                    }
             });
+            }
+            
+          },
+          {
+            text: "Close",
+            click: function() {
+              $( this ).dialog("close");
             }
           }
         ]
@@ -112,6 +129,22 @@ function itemtablerowclick(data2)
         resizable: false,
         modal: true,
         buttons: [
+          {
+            text: "Reprint Tag",
+            click: function() {
+              var id = data2[0];
+              $.ajax({
+                url:'zebraitemajax.php',
+                method:'POST',
+                data: {id:id},
+                dataType: "html",
+                success: function(data){
+                    console.log(data);
+                                   }
+            });
+              $( this ).dialog("close");
+            }
+          },
           {
             text: "Close",
             click: function() {

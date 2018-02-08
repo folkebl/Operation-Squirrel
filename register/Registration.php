@@ -2,7 +2,11 @@
 <html>
 <title>Registration</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
-    <link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css"/>  
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+    <script src="register.js"></script>     
   </head>
   <body id="RegistrationPage">
     <div class="menu-wrap">
@@ -16,51 +20,20 @@
             <h1>Registration</h1>
         </div>
 		<div class = "textboxes" id = "registrationpagetextboxes">
-			<form action="registration.php" method="post">
 				<label>First Name:</label><br>
-                <input type="text" name="fname"></input><br>
+                <input type="text" name="fname" id = "firstname"></input><br>
 				<label>Last Name:</label><br>
-                <input type="text" name="lname"></input><br>
+                <input type="text" name="lname" id = "lastname"></input><br>
 				<label>Phone (Optional):</label><br>
-                <input type="text" name="phone"></input><br>
+                <input type="text" name="phone" id = "phone"></input><br>
 				<label>Email (Optional):</label><br>
-                <input type="text" name="email"></input><br><br>
+                <input type="text" name="email" id = "email"></input><br><br>
                 <div>
-				    <input type="submit" name="SubmitButton" value="Submit"></input>
+				    <input type="submit" name="SubmitButton" id = "registersubmit"></input>
                 </div>
-            </form>
+        </div>
+        <div id = "registerdialogbox" style = "display:none">
+            <h3>Press the Sell Items button to sell an item, otherwise press done. A tag will then be printed.</h3>
         </div>
  </body>
 </html>
-
-<?php
-session_start();
-$con = mysqli_connect('127.0.0.1', 'root','');
-    if(!$con)
-    {
-        echo 'not connected to the server';
-    }
-    if(!mysqli_select_db($con,'capstone'))
-    {
-        echo 'database not selected';
-    }
-	if(isset($_POST["SubmitButton"]))
-	{
-        $fname=$_POST["fname"];
-		$lname=$_POST["lname"];
-		$phone=$_POST["phone"];
-        $email=$_POST["email"];
-        $sql = "INSERT INTO `registration`(`Seller ID`, `FirstName`, `LastName`, `Email`, `Phone`, `Buyer/seller`,`payment`,`Paymentforitemssold`) VALUES ('','$fname','$lname','$email','$phone','0','0','0')";
-        if(!mysqli_query($con,$sql))
-        {
-            echo "Data not inserted";
-        }
-        else
-        {
-            $id = mysqli_insert_id($con); // gets the last insert id
-            echo $id;
-            echo "data inserted";
-            require("ZebraRegister.php");
-        }
-    }
-?>

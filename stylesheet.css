@@ -259,3 +259,17 @@
 .adminnamedropdown{
     width:200px;
 }
+.signpad-wrap{
+    position: relative;
+    width: 850px;
+    height: 300px;
+    /* -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+    /* border: 2px solid black; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+}
+
