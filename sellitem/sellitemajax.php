@@ -11,23 +11,13 @@ $con = mysqli_connect('127.0.0.1', 'root','');
     {
         echo 'database not selected';
     }
-
-    echo 'post';
         $SellerID=$_POST["itemnum"];
 		$Description=$_POST["desc"];
 		$Condition=$_POST["condition"];
         $SellerNotes=$_POST["sellernotes"];
         $StartingBid=$_POST["stratingbid"];
-        if(isset($_POST["charity"]))
-        {
-          $Charity=true ;
-          $Charitytext = "Yes";
-        }
-        else
-        {
-          $Charity=false;
-          $Charitytext = "No";
-        }
+        $charity = $_POST["charity"];
+
         $sql = "INSERT INTO `iteminformation`(`ItemNumber`, `sellerNumber`,`BuyerNumber`, `Description`, `ItemCondition`, `SellersNotes`, `StartingBid`,`SellingPrice`, `Charity`) VALUES ('','$SellerID','','$Description','$Condition','$SellerNotes','$StartingBid','','$Charity')";
         if(!mysqli_query($con,$sql))
         {
@@ -43,7 +33,6 @@ $con = mysqli_connect('127.0.0.1', 'root','');
             $row = $querystmt->fetch();
             $fname = $row[0];
             $lname = $row[1];
-            //require("ZebraItem.php");
-            echo "data inserted";
+            //require("ZebraItem.php"); // this is commented out when not wanting to print otherwise errors will be thrown
     }
 ?>
