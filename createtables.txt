@@ -1,0 +1,26 @@
+CREATE DATABASE `capstone` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+CREATE TABLE `iteminformation` (
+  `ItemNumber` int(3) NOT NULL AUTO_INCREMENT,
+  `sellerNumber` int(3) NOT NULL,
+  `BuyerNumber` int(4) NOT NULL,
+  `Description` varchar(200) NOT NULL,
+  `ItemCondition` varchar(50) NOT NULL,
+  `SellersNotes` varchar(200) NOT NULL,
+  `StartingBid` int(4) NOT NULL,
+  `SellingPrice` int(5) NOT NULL,
+  `Charity` tinyint(1) NOT NULL,
+  PRIMARY KEY (`ItemNumber`)
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `registration` (
+  `Seller ID` int(11) NOT NULL AUTO_INCREMENT,
+  `FirstName` varchar(30) NOT NULL,
+  `LastName` varchar(30) NOT NULL,
+  `Email` varchar(25) DEFAULT NULL,
+  `Phone` varchar(30) DEFAULT NULL,
+  `Buyer/seller` tinyint(1) NOT NULL,
+  `Payment` tinyint(1) DEFAULT NULL,
+  `Paymentforitemssold` tinyint(1) DEFAULT NULL COMMENT 'If money has been give for the items they sold it is true',
+  PRIMARY KEY (`Seller ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
