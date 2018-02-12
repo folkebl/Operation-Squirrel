@@ -71,7 +71,7 @@
                                 <option name = "DropDown" value="<?php echo $row[0]?>"><?php echo $row[1] . " " . $row[2];?></option>
                         <?php endwhile;?>
                     </select><br>
-                <h3>Description: </h3> <input type="text" name="email" id = "Description"><br>
+                <h3>Description: </h3> <textarea rows="3" cols="30" name="Description" id = "itemdesc"></textarea><br>
                 <h3>Item Condition:</h3> <input type="text" name="phone" id = "itemcondition"><br>
                 <h3>Seller Notes: </h3> <input type="text" name="lname" id = "sellernotes"><br>
                 <h3>Starting Bid: </h3> <input type="number" name="lname" id = "startingbid"><br>

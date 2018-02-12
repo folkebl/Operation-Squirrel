@@ -8,7 +8,7 @@ require("../Query.php");
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
     <link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="../payin-out.js"></script>     
+    <script src="payout.js"></script>     
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>                                                                                                                                                                  
@@ -51,6 +51,7 @@ require("../Query.php");
             <canvas class = "signpad" id = "signpad"  width=850 height=300></canvas>
             </div>
         </div>
+    <div id = "alreadypaid" style = "display: none"><h3> This person has already been paid. Are you sure you want to continue?</h3></div>
   </body>
 </html>
 

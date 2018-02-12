@@ -18,7 +18,7 @@ $con = mysqli_connect('127.0.0.1', 'root','');
         $StartingBid=$_POST["stratingbid"];
         $charity = $_POST["charity"];
 
-        $sql = "INSERT INTO `iteminformation`(`ItemNumber`, `sellerNumber`,`BuyerNumber`, `Description`, `ItemCondition`, `SellersNotes`, `StartingBid`,`SellingPrice`, `Charity`) VALUES ('','$SellerID','','$Description','$Condition','$SellerNotes','$StartingBid','','$Charity')";
+        $sql = "INSERT INTO `iteminformation`(`ItemNumber`, `sellerNumber`,`BuyerNumber`, `Description`, `ItemCondition`, `SellersNotes`, `StartingBid`,`SellingPrice`, `Charity`) VALUES ('','$SellerID','','$Description','$Condition','$SellerNotes','$StartingBid','','$charity')";
         if(!mysqli_query($con,$sql))
         {
             echo "Data not inserted";
