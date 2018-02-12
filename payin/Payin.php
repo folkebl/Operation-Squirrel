@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 session_start();
-//require("Databaseconfig.php");
 $con = mysqli_connect('127.0.0.1', 'root','');
 if(!$con)
 {
@@ -23,7 +22,7 @@ $result = mysqli_query($con, $query);
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="../payin-out.js"></script>
+    <script src="payin.js"></script>
   </head>
   <body id="RegistrationPage">
     <div class="menu-wrap">
@@ -66,6 +65,7 @@ $result = mysqli_query($con, $query);
             <canvas class = "signpad" id = "signpad"  width=850 height=300></canvas>
             </div>
         </div>
+        <div id = "alreadypaid" style="display: none" > <h3>These items have already been paid for. Are you sure you want to continue?<h3></div>
   </body>
 </html>
 <?php

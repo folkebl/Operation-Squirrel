@@ -1,8 +1,28 @@
 $(document).ready(function(){
+    getdatafromurl();
     $("#itemdone").on("click",function(){
         itemalert();
     })
 });
+function getdatafromurl()
+{
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var id = url.searchParams.get("id");
+     console.log(id)
+        if (isNaN(id))
+            {
+                $("#namedropregistration").val(0);
+            }
+            else if (id == "" || id == null)
+                    {
+                        $("#namedropregistration").val(0);
+                    }
+                    else 
+                    {
+                        $("#namedropregistration").val(id);
+                    }
+}
 function itemalert()
 {
     if(inputvalidation())
@@ -46,7 +66,11 @@ function updateitemdata(){
     var condition = $("#condition").val();
     var sellernotes = $("#sellernotes").val();
     var stratingbid = $("#stratingbid").val();
-    var charity = $('#charity:checkbox:checked').length > 0;
+    var charity = $('#charity').is(':checked');
+    if(charity == true)
+    charity = 1;
+    else
+    charity = 0;
     
     console.log(itemnum,desc,condition,sellernotes,stratingbid,charity);
     $.ajax({
@@ -82,7 +106,7 @@ function inputvalidation()
                     alert("You must select a item description");
                     return false;
                 }
-            else if(desc == "")
+            else if(sellernotes == "")
                     {
                         highlightbox("#desc");
                         alert("You must select a item description");

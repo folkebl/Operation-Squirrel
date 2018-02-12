@@ -7,6 +7,8 @@ function registeralert()
 {
     if(inputvalidation())
     {
+        var fname = $("#firstname").val();
+        var lname = $("#lastname").val();
     $("#registerdialogbox").dialog({
         title: "Data Submitted",
         dialogClass: "no-close",
@@ -20,7 +22,18 @@ function registeralert()
             text: "Sell Items",
             click: function(event) {
                 adduser();
-            window.location.href = "http://localhost/sellitem/SellersPage.php";
+                setTimeout(function() {
+                $.ajax({
+                    url:'getlastidajax.php',
+                    method:'POST',
+                    data: {fname,lname},
+                    dataType: "html",
+                    success: function(data){
+                        console.log(data);
+                        window.location.href = "http://localhost/sellitem/SellersPage.php" + "?id=" + data;
+                                       }
+                });
+            },250);
             }
           },
           {
@@ -53,7 +66,7 @@ function adduser()
         data: {fname,lname,phone,email},
         dataType: "html",
         success: function(data){
-            alert(data);
+            
                            }
     });
 }

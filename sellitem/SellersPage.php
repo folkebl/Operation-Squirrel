@@ -48,7 +48,7 @@ $dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
       <input type="submit" name="Done" value="Done" id = "itemdone"></input><br>
     </div>
     <div id = "itemdialogbox" style = "display:none">
-            <h3>Press done or add Another item and a tag will be printerd.</h3>
+            <h3>Press done or add Another item and a tag will be printed.</h3>
     </div>
   </body>
 </html>

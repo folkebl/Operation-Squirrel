@@ -256,7 +256,7 @@
 #tabs{
     min-width: 950px;
 }
-.adminnamedropdown{
+.adminnamedropdown, #itemdesc{
     width:200px;
 }
 .signpad-wrap{
