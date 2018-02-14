@@ -1,3 +1,4 @@
+<!-- This gets all of the data needed for the user tag -->
 <?php
     $user = "root";
     $pass = "";
@@ -13,6 +14,7 @@
     $namerow = $namequery->fetch();
     $fname = $namerow[0];
     $lname = $namerow[1];
+    //this is the code that control what the label looks like
 $zebraCode = <<<ZEBRA
 CT~~CD,~CC^~CT~
 ^XA~TA000~JSN^LT0^MNN^MTD^PON^PMN^LH0,0^JMA^PR5,5~SD15^JUS^LRN^CI0^XZ

@@ -1,3 +1,4 @@
+<!-- This page gets all of the required data to print the labels -->
 <?php
     $user = "root";
     $pass = "";
@@ -32,7 +33,7 @@
     $namerow = $namequery->fetch();
     $fname = $namerow[0];
     $lname = $namerow[1];
-
+// This is the zebra code. if the label needs changed you will have to swap out the zebra code
 $zebraCode = <<<ZEBRA
 
 ﻿CT~~CD,~CC^~CT~
