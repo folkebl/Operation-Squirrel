@@ -1,10 +1,13 @@
+// This is the java script page for the admin page
+//
 $(document).ready(function(){
   var usertable = $('#usertable').DataTable();
   var itemtable = $('#itemtable').DataTable();
     $( "#tabs" ).tabs();
-    $('#usertable tbody').on( 'click', 'tr', function(event){var data1 = usertable.row(this).data(); usertablerowclick(data1)});
-    $('#itemtable tbody').on( 'click', 'tr', function(event){var data2 = itemtable.row(this).data(); itemtablerowclick(data2)});
+    $('#usertable tbody').on( 'click', 'tr', function(event){var data1 = usertable.row(this).data(); usertablerowclick(data1)});  // detects click on user table and passes the row data
+    $('#itemtable tbody').on( 'click', 'tr', function(event){var data2 = itemtable.row(this).data(); itemtablerowclick(data2)});  // detects click on item table and passes the row data
 });
+//This gets the all of the data from the table and then creates a dialog with the data
 function usertablerowclick(data1)
 {
     var holddata;
@@ -38,6 +41,7 @@ function usertablerowclick(data1)
             text: "Reprint Tag",
             click: function() {
               var id = data1[0];
+              // this is the ajax request to reprint a user tag
               $.ajax({
                 url:'zebraregisterajax.php',
                 method:'POST',
@@ -60,7 +64,7 @@ function usertablerowclick(data1)
                var itemsbought = $('#itemsbought').val();
                var itemssold = $('#itemssold').val();
                var id = data1[0];
-  
+              // ajax request to update all of the user information
               $.ajax({
                 url:'Adminuserajax.php',
                 method:'POST',
@@ -82,19 +86,19 @@ function usertablerowclick(data1)
         ]
       });
 }
-
+// this is called when a table row is clicked on
 function itemtablerowclick(data2)
 {
-    var table = $('#itemtable').DataTable();
+   // var table = $('#itemtable').DataTable();
     var sellerid = data2[0];
     $.ajax({
       url:'sellernameajax.php',
       method:'POST',
-      data: {sellerid:sellerid},
-      dataType: "html",
-      success: function(data){
-          $("#sellernamedropdown").val(data); 
-          console.log(data);
+      data: {sellerid},
+      dataType: "json",
+      success: function(sellid){
+          $("#sellernamedropdown").val(sellid); 
+          console.log(sellid[0]);
                          }
   });
     console.log(data2);
@@ -103,14 +107,15 @@ function itemtablerowclick(data2)
     $.ajax({
       url:'buyernameajax.php',
       method:'POST',
-      data: {buyerid:buyerid},
-      dataType: "html",
-      success: function(data){
-          $("#buyernamedropdown").val(data); 
-          console.log(data);
+      data: {buyerid},
+      dataType: "json",
+      success: function(bid){
+          $("#buyernamedropdown").val(bid); 
+          console.log(bid);
                          }
   });
-    $('#Description').val(data2[3]);
+    console.log(data2[3]);
+    $('#itemdesc').val(data2[3]);
     $('#itemcondition').val(data2[4]);
     $('#sellernotes').val(data2[5]);
     $('#startingbid').val(data2[6].replace('$ ',''));

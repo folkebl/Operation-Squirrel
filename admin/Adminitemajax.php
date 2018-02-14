@@ -1,3 +1,4 @@
+<!-- This updates all of the items data once the update button is pressed -->
 <?php
     $user = "root";
     $pass = "";

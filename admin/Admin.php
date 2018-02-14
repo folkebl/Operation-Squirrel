@@ -1,3 +1,4 @@
+<!-- This is the main page for the Admin page -->
 <?php 
     require("../Query.php");
     $user = "root";

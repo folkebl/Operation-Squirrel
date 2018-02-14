@@ -1,3 +1,4 @@
+<!-- This updates all of the user information when the update button is pressed on the admin page -->
 <?php
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];

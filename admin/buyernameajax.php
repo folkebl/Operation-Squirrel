@@ -1,3 +1,4 @@
+
 <?php
     $itemnumber = $_POST["buyerid"];
     $user = "root";
@@ -8,5 +9,5 @@
     $buyernamequery->bindparam(':itemnum',$itemnumber);
     $buyernamequery->execute();
     $row = $buyernamequery->fetch();
-    echo $row[0];
+    echo json_encode($row[0]);
 ?>
