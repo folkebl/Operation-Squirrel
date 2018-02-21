@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    $('select[name="namedropdown"]').change(function(event){payoutupdate()});
+    $('select[name="namedropdown"]').change(function(event){payoutupdate()}); // calles the function when a name is selected from the select box
 })
-
+// called to display the name at the top of the table
 function payoutupdate()
 {
      var id = $("#namedrop").val();
@@ -16,6 +16,7 @@ function payoutupdate()
                            }
     });
 }
+// called to create the table
 function payouttable()
 {
      var id = $("#namedrop").val();
@@ -30,6 +31,7 @@ function payouttable()
                            }
     });
 }
+// updates the database that the person has been paid
 function payoutupdatepayment()
 {
      var id = $("#namedrop").val();
@@ -43,7 +45,7 @@ function payoutupdatepayment()
                            }
     });
 }
-
+// controls all of the functions for the sign feature
 function signpad(){
     var canvas = $("#signpad");
     var signaturePad = new SignaturePad(document.getElementById('signpad'), {
@@ -87,7 +89,7 @@ function signpad(){
         ]
       });
 }
-
+// checks to see if the person has already been paid
 function payoutcheckifalreadypaid()
 {
     var id = $("#namedrop").val();

@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    $('select[name="namedropdownpayin"]').change(function(event){payinupdate()});
+    $('select[name="namedropdownpayin"]').change(function(event){payinupdate()}); // calls function when a name is selected in the drop down
 })
-
+// is called to display neme at top of page
 function payinupdate()
 {
     var id = $("#namedroppayin").val();
@@ -16,7 +16,7 @@ function payinupdate()
                            }
     });
 }
-
+// Creates the table 
 function payintable()
 {
      var id = $("#namedroppayin").val();
@@ -31,7 +31,7 @@ function payintable()
                            }
     });
 }
-
+// is called to update the payement
 function payinupdatepayment()
 {
      var id = $("#namedroppayin").val();
@@ -45,7 +45,7 @@ function payinupdatepayment()
                            }
     });
 }
-
+// the function that control all of the users sign features
 function signpad(){
     var canvas = $("#signpad");
     var signaturePad = new SignaturePad(document.getElementById('signpad'), {
@@ -89,7 +89,7 @@ function signpad(){
         ]
       });
 }
-
+// Cheacks to see if the user has already paid
 function payincheckifalreadypaid()
 {
     var id = $("#namedroppayin").val();

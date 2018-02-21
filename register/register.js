@@ -1,8 +1,8 @@
 $(document).ready(function(){
-    $("#registersubmit").on("click",function(){
-        registeralert();
-    })
+    $("#registersubmit").on("click",function(){registeralert();}) // calls the registeralert function when the button is clicked
 });
+
+// pulls up a dialog to see what the user wants to do next
 function registeralert()
 {
     if(inputvalidation())
@@ -53,6 +53,7 @@ function registeralert()
       });
     }
 }
+// this function is called to add the user to the database
 function adduser()
 {
     var fname = $("#firstname").val();
@@ -70,13 +71,11 @@ function adduser()
                            }
     });
 }
-
+// this is to make sure that the first and last name are not left blank and only contain letters
 function inputvalidation()
 {
     var fname = $("#firstname").val();
     var lname = $("#lastname").val();
-    var phone = $("#phone").val();
-    var email = $("#email").val();
     if(fname == "")
     {
        highlightbox("#firstname");

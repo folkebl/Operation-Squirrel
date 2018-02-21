@@ -7,16 +7,15 @@
    echo"<table>
         <tr>
             <th>Item Number</th>
-            <th>Name of seller</th>
-            <th>Name of buyer</th>
-            <th>Starting Bid</th>
+            <th>Description</th>
+            <th>Opening Bid</th>
             <th>Selling Price</th>
             <th>For Charity</th>
             <th>Fees</th>
             <th>Total</th> 
         </tr>";
         //Gets the table data where base on the name selected.
-        $querytabledata = "SELECT `ItemNumber`, `sellerNumber`, `BuyerNumber`, `StartingBid`, `SellingPrice`, `Charity` FROM `iteminformation` where sellerNumber = :nameofuser";
+        $querytabledata = "SELECT `ItemNumber`, `sellerNumber`, `BuyerNumber`, `StartingBid`, `SellingPrice`, `Charity`,`Description` FROM `iteminformation` where sellerNumber = :nameofuser";
         $tablestatement = $dbh->prepare($querytabledata);
         $tablestatement->bindparam(':nameofuser',$NameOfUser);
         $tablestatement->execute();
@@ -49,28 +48,22 @@
                     $fee = .50;
                 }
             }
-            // gets the buyers name
-             $buyernamequery = "SELECT `FirstName`,`LastName` FROM `registration` where `Seller ID` = :buyernumber";
-             $buyernamestatement = $dbh->prepare($buyernamequery);
-             $buyernamestatement->bindparam(':buyernumber',$row[2]);
-             $buyernamestatement->execute();
-             $namerowbuyer = $buyernamestatement->fetch();
    
              if($row[5] == true)
              $paid = "Yes"; 
              else
              $paid = "No";
-        echo "<tr><td>".$row[0]."</td><td>".$namerowseller[0] . " " . "$namerowseller[1]"."</td><td>"."$namerowbuyer[0]"." ". "$namerowbuyer[1]"."</td><td>"."$".$row[3]."</td><td>"."$".$row[4]."</td><td>".$paid."</td><td>"."$".$fee."</td><td>"."$".$itemTotal."</td></tr>";
+        echo "<tr><td>".$row[0]."</td><td>".$row[6]."</td><td>"."$".$row[3]."</td><td>"."$".$row[4]."</td><td>".$paid."</td><td>"."$".$fee."</td><td>"."$".$itemTotal."</td></tr>";
         endwhile;
         $overallTotal = ($RunningTotal - $feetotal);
     echo "<tfoot>
         <tr>
-            <th id = \"total\" colspan=\"6\">Totals:</th>
+            <th id = \"total\" colspan=\"5\">Totals:</th>
             <td>$$feetotal</td>
             <td>$$RunningTotal</td>
         </tr>
         <tr>
-            <th id = \"total\" colspan=\"7\">Total Amount Owed:</th>
+            <th id = \"total\" colspan=\"6\">Total Amount Owed:</th>
             <td>$$overallTotal</td>
         </tr>
         </tfoot>

@@ -1,6 +1,6 @@
 <!-- This is the main page for the Admin page -->
 <?php 
-    require("../Query.php");
+    require("../Query.php"); // some of the queries are done on this page
     $user = "root";
     $pass = "";
     $dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
@@ -16,7 +16,7 @@
 <title>Admin</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo"/>
     <link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> 
@@ -88,6 +88,7 @@
             <ul>
                 <li><a href="#tabs-1">Users</a></li>
                 <li><a href="#tabs-2">Items</a></li>
+                <li><a href="#tabs-3">Database</a></li>
             </ul>
   <div id="tabs-1">
     <table class = "myTable" id = "usertable">
@@ -129,7 +130,7 @@
                     <th>Description</th>
                     <th>Item Condition</th>
                     <th>Seller Notes</th>
-                    <th>Starting Bid</th>
+                    <th>Opening Bid</th>
                     <th>Selling Price</th>
                     <th>Charity</th> 
                 </tr>
@@ -155,6 +156,13 @@
                 <tr><td><?php echo $row[0] ?></td><td><?php echo $sellernamerow[0] . " " . $sellernamerow[1] ?></td><td><?php echo $buyernamerow[0] . " " . $buyernamerow[1] ?></td><td><?php echo $row[3] ?></td><td><?php echo $row[4] ?></td><td><?php echo $row[5] ?></td><td><?php echo "$ " . $row[6] ?></td><td><?php echo "$ " . $row[7] ?></td><td><?php echo $charity ?></td></tr>
             <?php endwhile?>
         </table> 
+        </div>
+        <div id="tabs-3">
+                    <h3>This button will delete all data from the database</h3>
+                    <input type="button" value = "Delete Tables" id="delete_tables_button"></input>
+        </div>
+        <div id = "delete_table_div" style = "Display:none"> 
+        <h3>You are about to delete all of the database information. Are you sure you want to?</h3>
         </div>
         </div>
  </body>

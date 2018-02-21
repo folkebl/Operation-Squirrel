@@ -1,9 +1,8 @@
 $(document).ready(function(){
     getdatafromurl();
-    $("#itemdone").on("click",function(){
-        itemalert();
-    })
+    $("#itemdone").on("click",function(){itemalert();})// when the button is presed it calls the item alert function
 });
+// gets the data from the url if any is there
 function getdatafromurl()
 {
     var url_string = window.location.href;
@@ -23,6 +22,7 @@ function getdatafromurl()
                         $("#namedropregistration").val(id);
                     }
 }
+//shows a dialog box when the button is pressed
 function itemalert()
 {
     if(inputvalidation())
@@ -60,6 +60,7 @@ function itemalert()
       });
     }
 }
+// updates all of the item information when called
 function updateitemdata(){
     var itemnum = $("#namedropregistration").val();
     var desc = $("#desc").val();
@@ -83,17 +84,16 @@ function updateitemdata(){
                            }
     });
 }
+// ensures all of the required data has been entered
 function inputvalidation()
 {
     var itemnum = $("#namedropregistration").val();
-    console.log(itemnum);
     var desc = $("#desc").val();
     var condition = $("#condition").val();
     var sellernotes = $("#sellernotes").val();
     var stratingbid = $("#stratingbid").val();
-    var charity = $("#charity").val();
-    var charity = $('#charity:checkbox:checked').length > 0;
-    console.log(charity);
+    // var charity = $("#charity").val();
+    // var charity = $('#charity:checkbox:checked').length > 0;
     if(itemnum == 0)
         {
             highlightbox("#namedropregistration");
