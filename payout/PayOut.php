@@ -18,16 +18,6 @@ require("../Query.php");
         <nav class="menu">
             <ul class="clearfix">
                 <li><a href="../index.html">Home</a></li>
-                <!-- <li>
-                    <a href="#">Auction <span class="arrow">&#9660;</span></a>
-
-                    <ul class="sub-menu">
-                        <li><a href="Registration.php">Register</a></li>
-                        <li><a href="SellersPage.php">Sell items</a></li>
-                        <li><a href="AuctionBlock.php">Auction block</a></li>
-                        <li><a href="#">Reports</a></li>
-                    </ul>
-                </li> -->
             </ul>
         </nav>
     </div>

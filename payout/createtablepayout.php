@@ -15,7 +15,7 @@
             <th>Total</th> 
         </tr>";
         //Gets the table data where base on the name selected.
-        $querytabledata = "SELECT `ItemNumber`, `sellerNumber`, `BuyerNumber`, `StartingBid`, `SellingPrice`, `Charity`,`Description` FROM `iteminformation` where sellerNumber = :nameofuser";
+        $querytabledata = "SELECT `ItemNumber`, `sellerNumber`, `BuyerNumber`, `StartingBid`, `SellingPrice`, `Charity`,`Description` FROM `iteminformation` where sellerNumber = :nameofuser AND item_delete = 0";
         $tablestatement = $dbh->prepare($querytabledata);
         $tablestatement->bindparam(':nameofuser',$NameOfUser);
         $tablestatement->execute();

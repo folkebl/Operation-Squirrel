@@ -4,11 +4,93 @@ $(document).ready(function(){
   $("#delete_tables_button").on('click', function(event){ deletetabledata()}); // calls the delete table method when button clicked
   var usertable = $('#usertable').DataTable(); // creates the datatables
   var itemtable = $('#itemtable').DataTable();// creates the datatables
+  var itemdeletetable = $('#itemdeletetable').DataTable();// creates the datatables
+  var userdeletetable = $('#userdeletetable').DataTable();// creates the datatables
+
     $( "#tabs" ).tabs(); // creates the tab system
     $('#usertable tbody').on( 'click', 'tr', function(event){var data1 = usertable.row(this).data(); usertablerowclick(data1)});  // detects click on user table and passes the row data
     $('#itemtable tbody').on( 'click', 'tr', function(event){var data2 = itemtable.row(this).data(); itemtablerowclick(data2)});  // detects click on item table and passes the row data
-});
-// This will truncate all of the tables meaning it deletes them all and the creates them again
+    $('#itemdeletetable tbody').on( 'click', 'tr', function(event){var itemnum = itemdeletetable.row(this).data(); itemundelete(itemnum)});  // detects click on user table and passes the row data
+    $('#userdeletetable tbody').on( 'click', 'tr', function(event){var Userid = userdeletetable.row(this).data(); userundelete(Userid)});
+  });
+
+
+  function userundelete(Userid)
+  { 
+    id = Userid[0]
+    $( "#undeleteuser" ).dialog({
+      title: "undelete User",
+      dialogClass: "no-close",
+      draggable: false,
+      height: 300,
+      width: 400,
+      resizable: false,
+      modal: true,
+      buttons: [
+        {
+          text: "Add Back",
+          click: function() {
+            $.ajax({
+              url:'undeleteuser.php',
+              method:'POST',
+              data: {id:id},
+              dataType: "html",
+              success: function(data){
+                location.reload();
+                                }
+          });
+            $( this ).dialog("close");
+          }
+        },
+        {
+          text: "Close",
+          click: function() {
+            $( this ).dialog("close");
+          }
+        }
+      ]
+    });
+
+  }
+
+function itemundelete(itemnum)
+{ 
+  itemnum = itemnum[0]
+  $( "#undeleteitem" ).dialog({
+    title: "undelete item",
+    dialogClass: "no-close",
+    draggable: false,
+    height: 300,
+    width: 400,
+    resizable: false,
+    modal: true,
+    buttons: [
+      {
+        text: "Add Back",
+        click: function() {
+          $.ajax({
+            url:'undeleteitem.php',
+            method:'POST',
+            data: {itemnum:itemnum},
+            dataType: "html",
+            success: function(data){
+              location.reload();
+                               }
+        });
+          $( this ).dialog("close");
+        }
+      },
+      {
+        text: "Close",
+        click: function() {
+          $( this ).dialog("close");
+        }
+      }
+    ]
+  });
+
+}
+
 function deletetabledata()
 {
   $( "#delete_table_div" ).dialog({
@@ -113,6 +195,22 @@ function usertablerowclick(data1)
             
           },
           {
+            text: "Delete User",
+            click: function() {
+               var id = data1[0];
+              $.ajax({
+                url:'deleteuser.php',
+                method:'POST',
+                data: {id:id},
+                dataType: "html",
+                success: function(event){
+                    location.reload();
+                                   }
+            });
+            }
+            
+          },
+          {
             text: "Close",
             click: function() {
               $( this ).dialog("close");
@@ -183,12 +281,6 @@ function itemtablerowclick(data2)
             }
           },
           {
-            text: "Close",
-            click: function() {
-              $( this ).dialog("close");
-            }
-          },
-          {
             text: "Update",
             click: function() {
               var itemnum = data2[0];
@@ -214,7 +306,30 @@ function itemtablerowclick(data2)
               });
               $( this ).dialog("close");
             }
-          }
+          },
+          {
+            text: "Delete Item",
+            click: function() {
+              var itemnum = data2[0];
+              console.log(itemnum);
+              $.ajax({
+                url:'deleteitem.php',
+                method:'POST',
+                data: {itemnum:itemnum},
+                dataType: "html",
+                success: function(event){
+                    location.reload();
+                                   }
+              });
+              $( this ).dialog("close");
+            }
+          },
+          {
+            text: "Close",
+            click: function() {
+              $( this ).dialog("close");
+            }
+          },
         ]
       });
 }
