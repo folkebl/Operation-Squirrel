@@ -10,7 +10,7 @@ if(!mysqli_select_db($con,'capstone'))
 {
     echo 'database not selected';
 }
-$query = "SELECT `Seller ID`, `FirstName`, `LastName` FROM `registration`";
+$query = "SELECT `Seller ID`, `FirstName`, `LastName` FROM `registration` WHERE user_delete = 0;";
 $result = mysqli_query($con, $query);
 ?>
 <html>
@@ -29,17 +29,6 @@ $result = mysqli_query($con, $query);
         <nav class="menu">
             <ul class="clearfix">
                 <li><a href="../index.html">Home</a></li>
-
-                <!-- <li>
-                    <a href="#">Auction <span class="arrow">&#9660;</span></a>
-
-                    <ul class="sub-menu">
-                        <li><a href="Registration.php">Register</a></li>
-                        <li><a href="SellersPage.php">Sell items</a></li>
-                        <li><a href="AuctionBlock.php">Auction block</a></li>
-                        <li><a href="#">Reports</a></li>
-                    </ul>
-                </li> -->
             </ul>
         </nav>
     </div>

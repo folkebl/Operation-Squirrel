@@ -14,7 +14,7 @@ class Queries
         $user = "root";
         $pass = "";
         $dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
-       $query = "SELECT `Seller ID`, `FirstName`, `LastName` FROM `registration`";
+       $query = "SELECT `Seller ID`, `FirstName`, `LastName` FROM `registration` WHERE user_delete = 0";
        $stmt = $dbh->prepare($query);
        $stmt->execute();
        return $stmt;
@@ -24,7 +24,7 @@ class Queries
         $user = "root";
         $pass = "";
         $dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
-        $query = "SELECT `ItemNumber`, `sellerNumber`, `BuyerNumber`, `StartingBid`, `SellingPrice`, `Charity` FROM `iteminformation` where sellerNumber = $sellernumber";
+        $query = "SELECT `ItemNumber`, `sellerNumber`, `BuyerNumber`, `StartingBid`, `SellingPrice`, `Charity` FROM `iteminformation` where sellerNumber = $sellernumber AND item_delete = 0";
         $stmt=$dbh->prepare($NameQuery);
         $stmt->execute();
         return $stmt;
