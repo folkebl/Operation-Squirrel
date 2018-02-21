@@ -1,13 +1,50 @@
 // This is the java script page for the admin page
 //
 $(document).ready(function(){
-  var usertable = $('#usertable').DataTable();
-  var itemtable = $('#itemtable').DataTable();
-    $( "#tabs" ).tabs();
+  $("#delete_tables_button").on('click', function(event){ deletetabledata()}); // calls the delete table method when button clicked
+  var usertable = $('#usertable').DataTable(); // creates the datatables
+  var itemtable = $('#itemtable').DataTable();// creates the datatables
+    $( "#tabs" ).tabs(); // creates the tab system
     $('#usertable tbody').on( 'click', 'tr', function(event){var data1 = usertable.row(this).data(); usertablerowclick(data1)});  // detects click on user table and passes the row data
     $('#itemtable tbody').on( 'click', 'tr', function(event){var data2 = itemtable.row(this).data(); itemtablerowclick(data2)});  // detects click on item table and passes the row data
 });
-//This gets the all of the data from the table and then creates a dialog with the data
+// This will truncate all of the tables meaning it deletes them all and the creates them again
+function deletetabledata()
+{
+  $( "#delete_table_div" ).dialog({
+    title: "Delete Tables",
+    dialogClass: "no-close",
+    draggable: false,
+    height: 300,
+    width: 400,
+    resizable: false,
+    modal: true,
+    buttons: [
+      {
+        text: "Delete",
+        click: function() {
+          // this is the ajax request to reprint a user tag
+          $.ajax({
+            url:'deletetables.php',
+            method:'POST',
+            dataType: "html",
+            success: function(data){
+                console.log(data);
+                               }
+        });
+          $( this ).dialog("close");
+        }
+      },
+      {
+        text: "Exit",
+        click: function() {
+          $( this ).dialog("close");
+        }
+      }
+    ]
+  });
+}
+//This gets the all of the data from the table and then creates a dialog with the data so it can be edited
 function usertablerowclick(data1)
 {
     var holddata;
@@ -26,8 +63,6 @@ function usertablerowclick(data1)
     else 
       holddata = "1";
     $('#itemssold').val(holddata);
-
-    console.log(data1);
     $( "#dialoguser" ).dialog({
         title: "User Admin",
         dialogClass: "no-close",
@@ -89,7 +124,6 @@ function usertablerowclick(data1)
 // this is called when a table row is clicked on
 function itemtablerowclick(data2)
 {
-   // var table = $('#itemtable').DataTable();
     var sellerid = data2[0];
     $.ajax({
       url:'sellernameajax.php',
@@ -98,11 +132,9 @@ function itemtablerowclick(data2)
       dataType: "json",
       success: function(sellid){
           $("#sellernamedropdown").val(sellid); 
-          console.log(sellid[0]);
                          }
   });
     console.log(data2);
-
     var buyerid = data2[0];
     $.ajax({
       url:'buyernameajax.php',
@@ -162,7 +194,7 @@ function itemtablerowclick(data2)
               var itemnum = data2[0];
               var sellernamedropdown = $("#sellernamedropdown").val(); 
               var buyernamedropdown =  $("#buyernamedropdown").val(); 
-              var Description = $('#Description').val();
+              var Description = $('#itemdesc').val();
               var itemcondition = $('#itemcondition').val();
               var sellernotes = $('#sellernotes').val();
               var startingbid = $('#startingbid').val();
