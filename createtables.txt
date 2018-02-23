@@ -10,9 +10,9 @@ CREATE TABLE `iteminformation` (
   `StartingBid` int(4) NOT NULL,
   `SellingPrice` int(5) NOT NULL,
   `Charity` tinyint(1) NOT NULL,
+  `item_delete` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`ItemNumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
-
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 CREATE TABLE `registration` (
   `Seller ID` int(11) NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(30) NOT NULL,
@@ -22,5 +22,6 @@ CREATE TABLE `registration` (
   `Buyer/seller` tinyint(1) NOT NULL,
   `Payment` tinyint(1) DEFAULT NULL,
   `Paymentforitemssold` tinyint(1) DEFAULT NULL COMMENT 'If money has been give for the items they sold it is true',
+  `user_delete` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`Seller ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
