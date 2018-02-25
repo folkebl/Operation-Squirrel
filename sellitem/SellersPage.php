@@ -7,11 +7,7 @@ $dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
 ?>
 <html>
 <title>Sell Items</title>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
-    <link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+<?php require("../links.html");?> 
     <script src="sellitem.js"></script>    
   </head>
   <body id="RegistrationPage">

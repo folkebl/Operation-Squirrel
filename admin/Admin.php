@@ -20,13 +20,7 @@
 <!DOCTYPE html>
 <html>
 <title>Admin</title>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo"/>
-    <link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> 
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <?php require("../links.html");?> 
     <script type="text/javascript" src = "datatable.js"></script>
   </head>
   <body class="pagecolor">

@@ -1,6 +1,19 @@
 $(document).ready(function() {
     $('select[name="namedropdown"]').change(function(event){payoutupdate()}); // calles the function when a name is selected from the select box
 })
+// calls the print receipt page
+function printreceipt()
+{
+     var id = $("#namedrop").val();
+    $.ajax({
+        url:'zebrapayoutreceiptajax.php',
+        method:'POST',
+        data: {id:id},
+        dataType: "html",
+        success: function(event){
+                           }
+    });
+}
 // called to display the name at the top of the table
 function payoutupdate()
 {
@@ -66,6 +79,7 @@ function signpad(){
           {
             text: "Save",
             click: function(event) {
+                printreceipt();
                 var id = $("#namedrop").val();
             var data = signaturePad.toDataURL('image/png');
               $( this ).dialog("close");

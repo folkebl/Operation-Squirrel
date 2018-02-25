@@ -28,4 +28,6 @@
     $query->bindparam(':email',$_POST["email"]);
     $query->execute();
     $id = $dbh->lastInsertId();
-    //require("ZebraRegister.php"); // undo this to print labels
+    $fname = $_POST["fname"];
+    $lname = $_POST["lname"];
+    require("ZebraRegister.php"); // undo this to print labels

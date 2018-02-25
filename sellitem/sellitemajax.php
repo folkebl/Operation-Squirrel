@@ -33,6 +33,7 @@ $con = mysqli_connect('127.0.0.1', 'root','');
             $row = $querystmt->fetch();
             $fname = $row[0];
             $lname = $row[1];
-            //require("ZebraItem.php"); // this is commented out when not wanting to print otherwise errors will be thrown
+            
+            require("ZebraItem.php"); // this is commented out when not wanting to print otherwise errors will be thrown
     }
 ?>
