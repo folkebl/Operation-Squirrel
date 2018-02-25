@@ -16,12 +16,7 @@ $result = mysqli_query($con, $query);
 <html>
   <head>
     <title>Great River Gaming Guild</title>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
-    <link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <?php require("../links.html");?> 
     <script src="payin.js"></script>
   </head>
   <body id="RegistrationPage">

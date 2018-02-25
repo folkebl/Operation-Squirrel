@@ -1,4 +1,6 @@
 <?php
+if($id < 10)
+{
 $zebraCode = <<<ZEBRA
 CT~~CD,~CC^~CT~
 ^XA~TA000~JSN^LT0^MNN^MTD^PON^PMN^LH0,0^JMA^PR5,5~SD15^JUS^LRN^CI0^XZ
@@ -7,12 +9,34 @@ $zebraCode = <<<ZEBRA
 ^PW812
 ^LL1015
 ^LS0
-^FT316,267^A0N,203,201^FH\^FD$id^FS
-^BY5,3,160^FT271,588^BCN,,N,N
+^FT94,531^A0N,660,655^FH\^FD0$id^FS
+^BY5,3,160^FT272,768^BCN,,N,N
 ^FD>$id^FS
-^FT24,781^A0N,45,45^FH\^FDName: $fname $lname^FS
+^FT17,927^A0N,45,45^FH\^FDDate: $date^FS
+^FT19,846^A0N,45,45^FH\^FDName: $fname $lname^FS
+^FO94,560^GB632,0,8^FS
 ^PQ1,0,1,Y^XZ
 ZEBRA;
+}
+else
+{
+$zebraCode=<<<ZEBRA
+CT~~CD,~CC^~CT~
+^XA~TA000~JSN^LT0^MNN^MTD^PON^PMN^LH0,0^JMA^PR5,5~SD15^JUS^LRN^CI0^XZ
+^XA
+^MMT
+^PW812
+^LL1015
+^LS0
+^FT94,531^A0N,660,655^FH\^FD$id^FS
+^BY5,3,160^FT272,768^BCN,,N,N
+^FD>$id^FS
+^FT17,927^A0N,45,45^FH\^FDDate: $date^FS
+^FT19,846^A0N,45,45^FH\^FDName: $fname $lname^FS
+^FO94,560^GB632,0,8^FS
+^PQ1,0,1,Y^XZ
+ZEBRA;
+}
 
 // printer connection variables
 $printerIpAddress = "192.168.2.2";

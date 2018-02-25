@@ -37,7 +37,7 @@
             $itemcounter++;
             $RunningTotal += $row[4];
             $itemTotal += $row[4];
-            if($itemcounter >= 6 && $itemcounter <= 15)
+            if($itemcounter >= 1 && $itemcounter <= 15)
                 {
                 $feetotal = $feetotal + .25;
                 $fee = .25;
@@ -63,7 +63,7 @@
             <td>$$RunningTotal</td>
         </tr>
         <tr>
-            <th id = \"total\" colspan=\"6\">Total Amount Owed:</th>
+            <th id = \"overalltotal\" colspan=\"6\">Total Amount Owed:</th>
             <td>$$overallTotal</td>
         </tr>
         </tfoot>

@@ -7,7 +7,7 @@ $(document).ready(function(){
   var itemdeletetable = $('#itemdeletetable').DataTable();// creates the datatables
   var userdeletetable = $('#userdeletetable').DataTable();// creates the datatables
 
-    $( "#tabs" ).tabs(); // creates the tab system
+    $("#tabs").tabs(); // creates the tab system
     $('#usertable tbody').on( 'click', 'tr', function(event){var data1 = usertable.row(this).data(); usertablerowclick(data1)});  // detects click on user table and passes the row data
     $('#itemtable tbody').on( 'click', 'tr', function(event){var data2 = itemtable.row(this).data(); itemtablerowclick(data2)});  // detects click on item table and passes the row data
     $('#itemdeletetable tbody').on( 'click', 'tr', function(event){var itemnum = itemdeletetable.row(this).data(); itemundelete(itemnum)});  // detects click on user table and passes the row data

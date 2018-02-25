@@ -1,6 +1,18 @@
 $(document).ready(function() {
     $('select[name="namedropdownpayin"]').change(function(event){payinupdate()}); // calls function when a name is selected in the drop down
 })
+function printreceipt()
+{
+    var id = $("#namedroppayin").val();
+    $.ajax({
+        url:'zebrareceiptajax.php',
+        method:'POST',
+        data: {id:id},
+        dataType: "html",
+        success: function(event){
+                           }
+    });
+}
 // is called to display neme at top of page
 function payinupdate()
 {
@@ -66,7 +78,8 @@ function signpad(){
           {
             text: "Save",
             click: function(event) {
-             var id = $("#namedroppayin").val();
+            printreceipt();
+            var id = $("#namedroppayin").val();
             var data = signaturePad.toDataURL('image/png');
               $( this ).dialog("close");
               $.post('../saveimg.php', {
