@@ -17,11 +17,11 @@
         </div>
 		<div class = "textboxes" id = "AuctionBlockTestBoxes">
                 <label>Item Number:</label><br>
-                <input type="number" name="ItemNumber" id = "itemnumber"><br>
+                <input type="number" min="0"name="ItemNumber" id = "itemnumber"><br>
 				<label>Buyer Number:</label><br>
-                <input type="number" name="BuyerNumber" id = "buyernumber"><br>
+                <input type="number" min="0" name="BuyerNumber" id = "buyernumber"><br>
 				<label>Selling Price:</label><br>
-                <input type="number" name="SellingPrice" id = "sellprice"><br><br>
+                <input type="number" min="0"name="SellingPrice" id = "sellprice"><br><br>
                 <div>
 				    <input type="submit" name="SubmitButton" value="Submit" id = "auctionbutton">
                 </div>
