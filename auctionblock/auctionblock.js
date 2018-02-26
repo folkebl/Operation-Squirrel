@@ -23,6 +23,24 @@ function inputvalidation()
                 alert("Selling price is a required field");
                 return false;
                 }
+                if($("#itemnumber").val() < 0)
+                {
+                   highlightbox("#itemnumber");
+                   alert("item number can't be less than zero");
+                   return false;
+                }
+                else  if($("#buyernumber").val() < 0 )
+                           {
+                               highlightbox("#buyernumber");
+                               alert("buyer number can't be less than zero");
+                               return false;
+                           }
+                       else  if($("#sellprice").val() < 0)
+                               {
+                               highlightbox("#sellprice");
+                               alert("Selling price can't be less than zero");
+                               return false;
+                               }
 return true;
 }
 //gets the values of all of the text boxes and puts them into the database
