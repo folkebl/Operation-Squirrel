@@ -27,7 +27,7 @@ $date = date("m.d.y");
    $itemcounter++;
    $RunningTotal += $row[4];
    $itemTotal += $row[4];
-   if($itemcounter >= 1 && $itemcounter <= 15)
+   if($itemcounter >= 6 && $itemcounter <= 15)
        {
        $feetotal = $feetotal + .25;
        $fee = .25;
@@ -40,19 +40,23 @@ $date = date("m.d.y");
    }
 
      if($row[5] == TRUE)
-         $price = 0;
+         $price = $row[4] . "*";
      else
+        {
         $price = $row[4];
+        $totalprice = $totalprice + $price;
+        }
 $itemdata = $itemdata . "Item Number : $row[0] Price : $$price \n";
-$totalprice = $totalprice + $price;
+
  $count++;
  }
  $totalprice = $totalprice - $feetotal;
-$labellength = 560 + ($count * 60);
-$itemstart = 250;
-$receiptlabel = $labellength - 150;
-$line = $labellength - 190;
-$name = $labellength - 250;
+$labellength = 760 + ($count * 60);
+$itemstart = 430;
+$receiptlabel = $labellength - 200;
+$line = $labellength - 240;
+$name = $labellength - 300;
+$nameline = $labellength - 315;
 $namequery = $statement->fetch();
 $first_and_last_name = $namequery[0] . " " . $namequery[1];
 $zebraCode = <<<ZEBRA
@@ -63,14 +67,16 @@ $zebraCode = <<<ZEBRA
 ^PW812
 ^LL$labellength
 ^LS0
-^FT523,39^A0I,68,67^FH\^FD$date^FS
-^FT800,152^A0I,68,67^FH\^FD Fees:$$feetotal Total:$$totalprice^FS
+^FT523,139^A0I,68,67^FH\^FD$date^FS
+^FT800,223^A0I,68,67^FH\^FD * indicates a charity item^FS
+^FT800,325^A0I,68,67^FH\^FD Fees:$$feetotal Total:$$totalprice^FS
 ^FT620,$receiptlabel^A0I,135,134^FH\^FDReceipt^FS
 ^FO17,$line^GB777,0,8^FS
 ^FT774,$name^A0I,68,67^FH\^FDSeller: $first_and_last_name^FS
 ^FT774,$itemstart^A0I,62,62^FB800,$count,L,^FD$itemdata^FS;
-^FO21,220^GB769,0,8^FS
-^FO21,123^GB769,0,8^FS
+^FO21,$nameline^GB769,0,8^FS
+^FO21,400^GB769,0,8^FS
+^FO21,300^GB769,0,8^FS
 ^PQ1,0,1,Y^XZ
 
 ZEBRA;

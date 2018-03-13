@@ -38,7 +38,7 @@ $dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
 			<label>Seller Notes:</label><br>
       <input type="text" name="SellerNotes"id = "sellernotes"></input><br>
       <label>Opening Bid:</label><br>
-      <input type="number" name="StartingBid"id = "stratingbid"></input><br>
+      <input type="number" name="StartingBid"id = "stratingbid" min="0"></input><br>
       <label>Charity:</label><br>
       <input type="checkbox" name="Charity"id = "charity"></input><br>
       <input type="submit" name="Done" value="Done" id = "itemdone"></input><br>

@@ -20,11 +20,11 @@ $itemdata = $itemdata . "Item Number : $itemrow[0] Price : $$itemrow[4] \n";
 $totalprice = $totalprice + $itemrow[4];
  $count++;
  }
-$labellength = 560 + ($count * 60);
-$itemstart = 220;
-$receiptlabel = $labellength - 150;
-$line = $labellength - 175;
-$name = $labellength - 250;
+$labellength = 650 + ($count * 60);
+$itemstart = 300;
+$receiptlabel = $labellength - 200;
+$line = $labellength - 250;
+$name = $labellength - 325;
 $namequery = $statement->fetch();
 $first_and_last_name = $namequery[0] . " " . $namequery[1];
 $zebraCode = <<<ZEBRA
@@ -35,13 +35,13 @@ $zebraCode = <<<ZEBRA
 ^PW812
 ^LL$labellength
 ^LS0
-^FT523,39^A0I,68,67^FH\^FD$date^FS
-^FT400,152^A0I,68,67^FH\^FDTotal: $$totalprice^FS
+^FT523,100^A0I,68,67^FH\^FD$date^FS
+^FT350,200^A0I,68,67^FH\^FDTotal: $$totalprice^FS
 ^FT620,$receiptlabel^A0I,135,134^FH\^FDReceipt^FS
 ^FO17,$line^GB777,0,8^FS
 ^FT774,$name^A0I,68,67^FH\^FDBuyer: $first_and_last_name^FS
 ^FT774,$itemstart^A0I,62,62^FB800,$count,L,^FD$itemdata^FS;
-^FO21,123^GB769,0,8^FS
+^FO21,175^GB769,0,8^FS
 ^PQ1,0,1,Y^XZ
 
 ZEBRA;
