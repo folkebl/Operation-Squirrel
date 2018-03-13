@@ -103,19 +103,19 @@ function inputvalidation()
         else if(desc == "")
                 {
                     highlightbox("#desc");
-                    alert("You must select a item description");
+                    alert("You must have an item description");
                     return false;
                 }
             else if(sellernotes == "")
                     {
                         highlightbox("#desc");
-                        alert("You must select a item description");
+                        alert("You must fill in the seller notes");
                         return false;
                     }
                 else if (condition == "")
                         {
                             highlightbox("#condition");
-                            alert("You must fill in the item description");
+                            alert("You must fill in the Condition");
                             return false;
                         }
                     else if (stratingbid == "")
@@ -124,6 +124,12 @@ function inputvalidation()
                                 alert("You must input the starting bid");
                                 return false;
                             }
+                            else if (stratingbid < 0)
+                                {
+                                    highlightbox("#stratingbid");
+                                    alert("You must input a number greater than 0");
+                                    return false;
+                                }
     return true;
 }
 function highlightbox(selector)
