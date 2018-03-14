@@ -31,16 +31,23 @@ $dbh = new PDO('mysql:host=localhost;dbname=capstone', $user,$pass);
                 <option name = "DropDown" value="<?php echo $row[0]?>"><?php echo $row[1] . " " . $row[2];?></option>
             <?php endwhile;?>
             </select><br>
-			<label>Description:</label><br>
+			<label>Item Description:</label><br>
       <textarea rows="3" cols="30" name="Description" id = "desc"></textarea><br>
-			<label>Condition:</label> <br>
+			<label>Item Condition:</label> <br>
       <input type="text" name="Condition"id = "condition"></input><br>
 			<label>Seller Notes:</label><br>
       <input type="text" name="SellerNotes"id = "sellernotes"></input><br>
       <label>Opening Bid:</label><br>
       <input type="number" name="StartingBid"id = "stratingbid" min="0"></input><br>
       <label>Charity:</label><br>
-      <input type="checkbox" name="Charity"id = "charity"></input><br>
+        <label class="label">
+          <input class="label__checkbox" type="checkbox" name="Charity" id = "charity_checkbox" />
+            <span class="label__text">
+              <span class="label__check">
+                <i class="fa fa-check icon"></i>
+              </span>
+             </span>
+         </label>
       <input type="submit" name="Done" value="Done" id = "itemdone"></input><br>
     </div>
     <div id = "itemdialogbox" style = "display:none">

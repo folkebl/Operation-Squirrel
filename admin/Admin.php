@@ -1,5 +1,11 @@
 <!-- This is the main page for the Admin page -->
 <?php 
+session_start();
+require("UserAuthenticator.php");
+if(!$UserAuthenticator->isLoggedin())
+{
+    $UserAuthenticator->redirectToLogin();
+}
     require("../Query.php"); // some of the queries are done on this page
     $user = "root";
     $pass = "";
@@ -27,7 +33,7 @@
     <div class="menu-wrap">
         <nav class="menu">
             <ul class="clearfix">
-                <li><a href="../index.html">Home</a></li>
+                <li><a href="logout.php">logout</a></li>
             </ul>
         </nav>
     </div>
@@ -91,6 +97,8 @@
                 <li><a href="#tabs-3">Database</a></li>
                 <li><a href="#tabs-4">Deleted Users</a></li>
                 <li><a href="#tabs-5">Deleted Items</a></li>
+                <li><a href="#tabs-6">Admin Users</a></li>
+                <li><a href="#tabs-7">Label Printer</a></li>
             </ul>
   <div id="tabs-1">
     <table class = "myTable" id = "usertable">
@@ -238,6 +246,18 @@
         </div>
         <div id = "undeleteitem" style = "display:none">
         <h3>Would you like to add this item back?</h3>
+        </div>
+        <div id="tabs-6">
+            <h3>Create a new admin user</h3>
+            <input type="text" name = "username" Placeholder = "Username:" id = "admin_username"><br>
+            <input type="password" name = "password" Placeholder = "Password:" id = "admin_password"><br>
+            <input type="password" name = "password" Placeholder = "Confirm Password:" id = "admin_password_confirm"><br>
+            <input type = "button" name = "backtomain" value = "Add User" id = "add_admin_user_button"></input>
+        </div>
+        <div id="tabs-7">
+            <h3>Label Printer IP</h3>
+            <input type="text" id = "label_ip"><br>
+            <input type = "button"  value = "Update IP address" id = "update_label_printer_button"></input>
         </div>
         </div>
  </body>

@@ -67,7 +67,7 @@ function updateitemdata(){
     var condition = $("#condition").val();
     var sellernotes = $("#sellernotes").val();
     var stratingbid = $("#stratingbid").val();
-    var charity = $('#charity').is(':checked');
+    var charity = $('#charity_checkbox').is(':checked');
     if(charity == true)
     charity = 1;
     else

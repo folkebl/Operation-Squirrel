@@ -1,6 +1,9 @@
 // This is the java script page for the admin page
 //
 $(document).ready(function(){
+  loadlabelip();
+  $("#add_admin_user_button").on('click', function(event){ addadminuser()});
+  $("#update_label_printer_button").on('click', function(event){ labelprinteripupdate()});
   $("#delete_tables_button").on('click', function(event){ deletetabledata()}); // calls the delete table method when button clicked
   var usertable = $('#usertable').DataTable(); // creates the datatables
   var itemtable = $('#itemtable').DataTable();// creates the datatables
@@ -13,7 +16,53 @@ $(document).ready(function(){
     $('#itemdeletetable tbody').on( 'click', 'tr', function(event){var itemnum = itemdeletetable.row(this).data(); itemundelete(itemnum)});  // detects click on user table and passes the row data
     $('#userdeletetable tbody').on( 'click', 'tr', function(event){var Userid = userdeletetable.row(this).data(); userundelete(Userid)});
   });
+  function loadlabelip()
+  {
+    $.ajax({
+      url:'getlabelip.php',
+      method:'POST',
+      dataType: "html",
+      success: function(data){
+        $("#label_ip").val(data);
+                        }
+  });
+  }
+  function labelprinteripupdate()
+  {
+    var ip = $("#label_ip").val();
+            $.ajax({
+              url:'updateip.php',
+              method:'POST',
+              data: {ip},
+              dataType: "html",
+              success: function(data){
+                location.reload();
+                                }
+          });
 
+  }
+  function addadminuser()
+  {
+    var username = $("#admin_username").val();
+    var password = $("#admin_password").val();
+    var passwordconfirm = $("#admin_password_confirm").val();
+    if(password == passwordconfirm)
+      {
+            $.ajax({
+              url:'Register.php',
+              method:'POST',
+              data: {username,password},
+              dataType: "html",
+              success: function(data){
+                location.reload();
+                                }
+          });
+      }
+      else
+      {
+        alert("Your Password didn't match");
+      }
+  }
 
   function userundelete(Userid)
   { 

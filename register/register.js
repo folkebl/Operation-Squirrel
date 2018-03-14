@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("#firstname").focus();
     $("#registersubmit").on("click",function(){registeralert();}) // calls the registeralert function when the button is clicked
 });
 

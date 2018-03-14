@@ -81,7 +81,11 @@ $zebraCode = <<<ZEBRA
 
 ZEBRA;
 // printer connection variables
-$printerIpAddress = "192.168.2.2";
+$getipquery = "SELECT * FROM `capstone`.`label_printer`where `id` = 1;";
+$getipquery = $dbh->prepare($getipquery);
+$getipquery->execute();
+$ip = $getipquery->fetch();
+$printerIpAddress = $ip[1];
 $port = "9100";
 $password = "1234";
 
