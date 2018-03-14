@@ -13,6 +13,7 @@ CREATE TABLE `iteminformation` (
   `item_delete` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`ItemNumber`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
 CREATE TABLE `registration` (
   `Seller ID` int(11) NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(30) NOT NULL,
@@ -25,3 +26,19 @@ CREATE TABLE `registration` (
   `user_delete` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`Seller ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `capstone`.`admin_users` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ID`));
+
+CREATE TABLE `capstone`.`label_printer` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `label_printer_ip` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+INSERT INTO `capstone`.`label_printer`
+(`label_printer_ip`)
+VALUES
+("192.168.2.2");
