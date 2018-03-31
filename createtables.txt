@@ -7,8 +7,8 @@ CREATE TABLE `iteminformation` (
   `Description` varchar(200) NOT NULL,
   `ItemCondition` varchar(50) NOT NULL,
   `SellersNotes` varchar(200) NOT NULL,
-  `StartingBid` int(4) NOT NULL,
-  `SellingPrice` int(5) NOT NULL,
+  `StartingBid` double NOT NULL,
+  `SellingPrice` double NOT NULL,
   `Charity` tinyint(1) NOT NULL,
   `item_delete` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`ItemNumber`)
