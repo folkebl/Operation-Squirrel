@@ -22,6 +22,9 @@ if(!$UserAuthenticator->isLoggedin())
     $deleteditemquery = "SELECT * FROM capstone.iteminformation WHERE item_delete = 1;";
     $deleteditemquery = $dbh->prepare($deleteditemquery);
     $deleteditemquery->execute();
+    $adminquery = "SELECT * FROM capstone.admin_users";
+    $adminquery = $dbh->prepare($adminquery);
+    $adminquery->execute();
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,7 +83,7 @@ if(!$UserAuthenticator->isLoggedin())
                     </select><br>
                 <h3>Description: </h3> <textarea rows="3" cols="30" name="Description" id = "itemdesc"></textarea><br>
                 <h3>Item Condition:</h3> <input type="text" name="phone" id = "itemcondition"><br>
-                <h3>Seller Notes: </h3> <input type="text" name="lname" id = "sellernotes"><br>
+                <h3>Seller Notes: </h3> <textarea rows="3" cols="30" name="lname" id = "sellernotes"></textarea><br>
                 <h3>Starting Bid: </h3> <input type="number" name="lname" id = "startingbid"><br>
                 <h3>Selling Price: </h3> <input type="number" name="lname" id = "sellingprice"><br>
                 <h3>Charity: </h3>
@@ -248,11 +251,37 @@ if(!$UserAuthenticator->isLoggedin())
         <h3>Would you like to add this item back?</h3>
         </div>
         <div id="tabs-6">
-            <h3>Create a new admin user</h3>
-            <input type="text" name = "username" Placeholder = "Username:" id = "admin_username"><br>
-            <input type="password" name = "password" Placeholder = "Password:" id = "admin_password"><br>
-            <input type="password" name = "password" Placeholder = "Confirm Password:" id = "admin_password_confirm"><br>
-            <input type = "button" name = "backtomain" value = "Add User" id = "add_admin_user_button"></input>
+            <div id = "admin_wrap">
+                <div id = "new_admin_user">
+                    <h3>Create a new admin user</h3>
+                    <input type="text" name = "username" Placeholder = "Username:" id = "admin_username"><br>
+                    <input type="password" name = "password" Placeholder = "Password:" id = "admin_password"><br>
+                    <input type="password" name = "password" Placeholder = "Confirm Password:" id = "admin_password_confirm"><br>
+                    <input type = "button" name = "backtomain" value = "Add User" id = "add_admin_user_button"></input>
+                </div>
+                <div id = "admin_user_table_div">
+                        <table class = "myTable" id = "admin_user_table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                while($adminuser = $adminquery->fetch()): 
+                                ?>
+                                    <tr id = "<?php echo $adminuser[0]?>"><td><?php echo $adminuser[0] ?></td><td><?php echo $adminuser[1]?></td></tr> 
+                                <?php
+                                endwhile
+                                ?>
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+            <div id = "delete_admin" style = "display:none">
+                <h2> Would you like to delete this admin user?</h2>
+            </div>
         </div>
         <div id="tabs-7">
             <h3>Label Printer IP</h3>

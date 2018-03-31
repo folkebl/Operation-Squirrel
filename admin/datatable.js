@@ -9,13 +9,51 @@ $(document).ready(function(){
   var itemtable = $('#itemtable').DataTable();// creates the datatables
   var itemdeletetable = $('#itemdeletetable').DataTable();// creates the datatables
   var userdeletetable = $('#userdeletetable').DataTable();// creates the datatables
+  var adminuser = $('#admin_user_table').DataTable();// creates the datatables
 
     $("#tabs").tabs(); // creates the tab system
     $('#usertable tbody').on( 'click', 'tr', function(event){var data1 = usertable.row(this).data(); usertablerowclick(data1)});  // detects click on user table and passes the row data
     $('#itemtable tbody').on( 'click', 'tr', function(event){var data2 = itemtable.row(this).data(); itemtablerowclick(data2)});  // detects click on item table and passes the row data
     $('#itemdeletetable tbody').on( 'click', 'tr', function(event){var itemnum = itemdeletetable.row(this).data(); itemundelete(itemnum)});  // detects click on user table and passes the row data
     $('#userdeletetable tbody').on( 'click', 'tr', function(event){var Userid = userdeletetable.row(this).data(); userundelete(Userid)});
+    $('#admin_user_table tbody').on( 'click', 'tr', function(event){var adminid = adminuser.row(this).data(); adminusers(adminid)});
   });
+  function adminusers(adminid)
+  {
+    adminid = adminid[0];
+    $( "#delete_admin" ).dialog({
+      title: "Delete Admin",
+      dialogClass: "no-close",
+      draggable: false,
+      height: 300,
+      width: 400,
+      resizable: false,
+      modal: true,
+      buttons: [
+        {
+          text: "Delete admin",
+          click: function() {
+            $.ajax({
+              url:'deleteadmin.php',
+              method:'POST',
+              data: {adminid:adminid},
+              dataType: "html",
+              success: function(data){
+                location.reload();
+                                }
+          });
+            $( this ).dialog("close");
+          }
+        },
+        {
+          text: "Close",
+          click: function() {
+            $( this ).dialog("close");
+          }
+        }
+      ]
+    });
+  }
   function loadlabelip()
   {
     $.ajax({
@@ -308,7 +346,7 @@ function itemtablerowclick(data2)
         title: "Item Admin",
         dialogClass: "no-close",
         draggable: false,
-        height: 900,
+        height: 750,
         width: 500,
         resizable: false,
         modal: true,
