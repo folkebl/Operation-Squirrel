@@ -5,12 +5,13 @@ Project4
 <html>
     <head>
     <?php require("../links.html");?> 
+    <script type="text/javascript" src = "adminlogin.js"></script>
     </head>
     <body class="pagecolor">
         <div class = "centertext"><p>Admin Login</p></div>
         <div id = "logininfo">
             <form action = "login.php" method = "POST">
-            <input type="text" name = "username" placeholder = "Username:"><br>
+            <input type="text" name = "username" placeholder = "Username:" id = "admin_login_username"><br>
             <input type="password" name = "password" Placeholder = "Password:"><br>
             <div>
             <button class = "buttondesign" type = "submit" name = "Submit">Login</button><br>
