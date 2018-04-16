@@ -30,7 +30,7 @@ CREATE TABLE `registration` (
 CREATE TABLE `capstone`.`admin_users` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(256) NOT NULL,
   PRIMARY KEY (`ID`));
 
 CREATE TABLE `capstone`.`label_printer` (
